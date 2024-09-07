@@ -163,3 +163,5 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "access-control-allow-origin",
 ]
+
+AUTH_USER_MODEL = 'users.User'

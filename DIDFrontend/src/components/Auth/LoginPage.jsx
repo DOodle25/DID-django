@@ -33,7 +33,9 @@ const LoginPage = () => {
     try {
       const response = await api.post(
         "login",
-        { username: email, password },
+        { 
+          // username: 
+          email, password },
         {
           withCredentials: true,
           headers: {

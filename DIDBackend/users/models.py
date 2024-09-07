@@ -1,10 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, AbstractUser
 from django.utils import timezone
 import jwt
 
 class UserManager(BaseUserManager):
-    
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
@@ -14,12 +13,14 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password=None, **extra_fields):
+    def create_superuser(self, username, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(username, email, password, **extra_fields)
 
-class User(AbstractBaseUser):
+class User(AbstractUser
+# , PermissionsMixin
+):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=50)
@@ -28,10 +29,28 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UserManager()
+  
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+
+
+    objects = UserManager()
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='user_groups',  # Add this to avoid clashes
+        blank=True,
+        help_text=('The groups this user belongs to. A user will get all permissions granted to each of their groups.'),
+        verbose_name='groups',
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='user_permissions',  # Add this to avoid clashes
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions',
+    )
 
     def generate_auth_token(self):
         token = jwt.encode({'id': self.id, 'exp': timezone.now() + timezone.timedelta(days=1)}, 'SECRET_KEY', algorithm='HS256')

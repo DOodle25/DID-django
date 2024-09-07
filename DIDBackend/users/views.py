@@ -18,9 +18,9 @@ class LoginUserView(views.APIView):
         password = request.data.get('password')
         user = authenticate(email=email, password=password)
         if user:
-            token = user.generate_auth_token()
+            # token = user.generate_auth_token()
             response = {
-                'token': token,
+                # 'token': token,
                 'username': user.username,
                 'email': user.email,
                 'role': user.role,
