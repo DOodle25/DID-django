@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-data{
+  margin: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+text{
+  color: black;
+  font-size: 3rem;
+  font-family: monospace;
+}
+
+/* show the site only on desktop screen */
+
+/* @media only screen and (max-width: 600px) {
+  body{
+    display: none;
+  }
+} */
