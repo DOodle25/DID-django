@@ -52,6 +52,12 @@ class User(AbstractUser
         verbose_name='user permissions',
     )
 
-    def generate_auth_token(self):
-        token = jwt.encode({'id': self.id, 'exp': timezone.now() + timezone.timedelta(days=1)}, 'SECRET_KEY', algorithm='HS256')
-        return token
+    # def generate_auth_token(self):
+    #     token = jwt.encode({'id': self.id, 'exp': timezone.now() + timezone.timedelta(days=1)}, 'SECRET_KEY', algorithm='HS256')
+    #     return token
+
+class ActiveSession(models.Model):
+    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    token = models.CharField(max_length=255)
+    date = models.DateTimeField(auto_now_add=True)
+
