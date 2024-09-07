@@ -24,6 +24,7 @@
     "crypto-js": "^4.2.0",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
+    "js-cookie": "^3.0.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "papaparse": "^5.4.1",

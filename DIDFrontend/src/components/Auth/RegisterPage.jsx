@@ -14,18 +14,16 @@ import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/Logo";
 import { Toaster } from "react-hot-toast";
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-const RegisterPage = () => {
+import Cookies from "js-cookie"; // Import js-cookie
 
-  
+const RegisterPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     role: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -36,15 +34,20 @@ const RegisterPage = () => {
   };
 
   const handleRegister = async () => {
+    const csrfToken = Cookies.get('csrftoken'); // Get CSRF token from cookie
+
     try {
       const response = await axios.post(
         "http://localhost:5000/register",  // Use the correct API endpoint
         formData,
         {
           withCredentials: true,  // Include credentials for CSRF and sessions
-        }
+          headers: {
+            'X-CSRFToken': csrfToken, // Include CSRF token in the request headers
+          },
+        },
       );
-  
+
       if (response.status === 201) {
         toast.success("Registration successful!");
       } else if (response.status === 400) {

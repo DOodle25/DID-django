@@ -15,9 +15,9 @@ import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import Cookies from "js-cookie"; // Import js-cookie
 
 const api = axios.create({
-  // baseURL: "https://myapp.vercel.app/",
   baseURL: "http://localhost:5000/",
 });
 
@@ -28,11 +28,18 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    const csrfToken = Cookies.get('csrftoken'); // Get CSRF token from cookie
+
     try {
       const response = await api.post(
-        "login", 
-        { username: email, password }, 
-        { withCredentials: true }
+        "login",
+        { username: email, password },
+        {
+          withCredentials: true,
+          headers: {
+            'X-CSRFToken': csrfToken, // Include CSRF token in the request headers
+          },
+        }
       );
 
       if (response.status === 200) {
