@@ -11,12 +11,13 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie"; // Import js-cookie
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -50,6 +51,7 @@ const RegisterPage = () => {
 
       if (response.status === 201) {
         toast.success("Registration successful!");
+        navigate("/login");  // Redirect to login
       } else if (response.status === 400) {
         toast.error(response.data.message);
       } else {

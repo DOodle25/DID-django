@@ -30,6 +30,7 @@ import UnjhaMap from "./components/Demography/Maps/UnjhaMap.jsx";
 // import AuthLayout from "./components/Utils/AuthLayout.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import { AuthProvider } from './auth-context/auth-context';
 
 // import Temp1 from "./components/Dump/Temp1.jsx";
 
@@ -60,8 +61,9 @@ const routes = createRoutesFromElements(
       <Route path="/vijapur" element={<VijapurMap />} />
       {/* <Route path="/temp1" element={<KheraluMap />} /> */}
       <Route path="/addscheme" element={<AddSchemes />} />
-      <Route path="/register" element={<RegisterPage />} />
+      
     </Route>
+    <Route path="/register" element={<RegisterPage />} />
     <Route path="/login" element={<LoginPage />} />
   </>
 );
@@ -70,10 +72,12 @@ const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider>
     <Provider store={store}>
       <NextUIProvider>
         <RouterProvider router={router} />
       </NextUIProvider>
     </Provider>
+    </AuthProvider>
   </React.StrictMode>
 );

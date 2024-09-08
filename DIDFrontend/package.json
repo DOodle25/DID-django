@@ -20,6 +20,7 @@
     "@visx/mock-data": "^3.3.0",
     "@visx/shape": "^3.3.0",
     "axios": "^1.6.0",
+    "caniuse-lite": "^1.0.30001658",
     "chart.js": "^4.4.0",
     "crypto-js": "^4.2.0",
     "framer-motion": "^10.16.4",

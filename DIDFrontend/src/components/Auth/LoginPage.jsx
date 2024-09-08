@@ -16,44 +16,46 @@ import { login } from "../../store/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie"; // Import js-cookie
+import { useAuth } from "../../auth-context/auth-context";
 
 const api = axios.create({
   baseURL: "http://localhost:5000/",
 });
 
 const LoginPage = () => {
+  const { setToken , setUser } = useAuth();  // Get setToken and setUser from Auth context
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const csrfToken = Cookies.get('csrftoken'); // Get CSRF token from cookie
+    const csrfToken = Cookies.get("csrftoken"); // Get CSRF token from cookie
 
     try {
       const response = await api.post(
         "login",
-        { 
-          // username: 
-          email, password },
+        { email, password },
         {
           withCredentials: true,
-          headers: {
-            'X-CSRFToken': csrfToken, // Include CSRF token in the request headers
-          },
+          headers: { "X-CSRFToken": csrfToken }, // Include CSRF token in the request headers
         }
       );
 
-      if (response.status === 200) {
-        dispatch(login({ userData: response.data }));
+      if (response.status === 200 && response.data.success) {
+        // Save token and user data in context
+        const userData = response.data.user;
+        setToken(response.data.token);
+        setUser(userData);
+        dispatch(login({ userData }));
+
         toast.success("Login successful");
-        navigate("/");
+        navigate("/");  // Redirect to homepage or profile
       } else {
         toast.error("Login failed");
       }
     } catch (error) {
       console.error("Error:", error);
-
       if (error.response && error.response.status === 401) {
         toast.error("Invalid credentials");
       } else {
