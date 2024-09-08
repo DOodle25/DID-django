@@ -10,10 +10,13 @@ const MahesanaMap = () => {
   useEffect(() => {
     const fetchPopsDataMahesana = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops"
-          , {
+          "http://localhost:5000/agepops/"
+          , { headers: {
+            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+          },
           withCredentials: true,
         });
         if (response.data && response.data.agePops) {
@@ -37,13 +40,14 @@ const MahesanaMap = () => {
 
     const fetchMahesanaData = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata",
-          {
-            withCredentials: true,
-          }
-        );
+          "http://localhost:5000/getcitiesdata/", { headers: {
+            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+          },
+          withCredentials: true,
+        });
 
         // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {

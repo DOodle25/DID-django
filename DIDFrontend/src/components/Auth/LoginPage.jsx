@@ -44,13 +44,12 @@ const LoginPage = () => {
 
       if (response.status === 200 && response.data.success) {
         // Save token and user data in context
-        const userData = response.data.user;
         setToken(response.data.token);
-        setUser(userData);
-        dispatch(login({ userData }));
+        setUser(JSON.stringify(response.data.user));
+        dispatch(login( response.data.user ));
 
         toast.success("Login successful");
-        navigate("/");  // Redirect to homepage or profile
+        navigate("/profile");  // Redirect to homepage or profile
       } else {
         toast.error("Login failed");
       }

@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import SchemeListView, SchemeDetailView
+from .views import SchemeDataListView, SchemeDataDetailView, SchemeDataBulkDeleteView
+from django.http import JsonResponse
+
 
 urlpatterns = [
-    path('schemes/', SchemeListView.as_view(), name='schemes_list'),
-    path('schemes/<int:id>/', SchemeDetailView.as_view(), name='scheme_detail'),
+    path('getschemes/', SchemeDataListView.as_view(), name='scheme-list'),
+    path('schemes/<int:pk>', SchemeDataDetailView.as_view(), name='scheme-detail'),
+    path('schemes/bulk-delete', SchemeDataBulkDeleteView.as_view(), name='scheme-bulk-delete'),
 ]

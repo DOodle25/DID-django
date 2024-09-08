@@ -27,28 +27,21 @@ import JotanaMap from "./components/Demography/Maps/JotanaMap.jsx";
 import VadnagarMap from "./components/Demography/Maps/VadnagarMap.jsx";
 import VijapurMap from "./components/Demography/Maps/VijapurMap.jsx";
 import UnjhaMap from "./components/Demography/Maps/UnjhaMap.jsx";
-// import AuthLayout from "./components/Utils/AuthLayout.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { AuthProvider } from './auth-context/auth-context';
-
-// import Temp1 from "./components/Dump/Temp1.jsx";
+import ProtectedRoute from "./components/Auth/ProtectedRoute"; // Import the ProtectedRoute
 
 const routes = createRoutesFromElements(
   <>
     <Route
       path="/"
-      element={
-        // <AuthLayout authentication={true}>
-        <App />
-        // </AuthLayout>
-      }
+      element={<App />}
     >
       <Route path="" element={<Home />} />
       <Route path="/population" element={<Population />} />
-      <Route path="/upload" element={<UploadCSV />} />
       <Route path="/demography" element={<Demography />} />
-      <Route path="/profile" element={<UserProfile />} />
+      <Route path="/addscheme" element={<AddSchemes />} />
       <Route path="/visnagar" element={<VisnagarMap />} />
       <Route path="/kheralu" element={<KheraluMap />} />
       <Route path="/satlasana" element={<SatlasanaMap />} />
@@ -59,10 +52,27 @@ const routes = createRoutesFromElements(
       <Route path="/unjha" element={<UnjhaMap />} />
       <Route path="/vadnagar" element={<VadnagarMap />} />
       <Route path="/vijapur" element={<VijapurMap />} />
-      {/* <Route path="/temp1" element={<KheraluMap />} /> */}
-      <Route path="/addscheme" element={<AddSchemes />} />
-      
+
+      {/* Protected Routes */}
+      <Route
+        path="/upload"
+        element={
+          <ProtectedRoute>
+            <UploadCSV />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        }
+      />
     </Route>
+
+    {/* Public Routes */}
     <Route path="/register" element={<RegisterPage />} />
     <Route path="/login" element={<LoginPage />} />
   </>
@@ -73,11 +83,11 @@ const router = createBrowserRouter(routes);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <Provider store={store}>
-      <NextUIProvider>
-        <RouterProvider router={router} />
-      </NextUIProvider>
-    </Provider>
+      <Provider store={store}>
+        <NextUIProvider>
+          <RouterProvider router={router} />
+        </NextUIProvider>
+      </Provider>
     </AuthProvider>
   </React.StrictMode>
 );

@@ -10,10 +10,13 @@ const JotanaMap = () => {
   useEffect(() => {
     const fetchPopsDataJotana = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops"
-          , {
+          "http://localhost:5000/agepops/"
+          , { headers: {
+            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+          },
           withCredentials: true,
         });
         if (response.data && response.data.agePops) {
@@ -37,13 +40,14 @@ const JotanaMap = () => {
 
     const fetchJotanaData = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata",
-          {
-            withCredentials: true,
-          }
-        );
+          "http://localhost:5000/getcitiesdata/", { headers: {
+            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+          },
+          withCredentials: true,
+        });
 
         // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
@@ -101,63 +105,63 @@ const JotanaMap = () => {
           </p>
           <p>
             {jotanaData ? (
-              ` No of Schools: ${jotanaData.noOfSchools}`
+              ` No of Schools: ${jotanaData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Colleges: ${jotanaData.noOfColleges}`
+              ` No of Colleges: ${jotanaData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Universities: ${jotanaData.noOfUniversities}`
+              ` No of Universities: ${jotanaData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Bus Stations: ${jotanaData.noOfBusStations}`
+              ` No of Bus Stations: ${jotanaData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Railway Stations: ${jotanaData.noOfRailwayStations}`
+              ` No of Railway Stations: ${jotanaData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Post Offices: ${jotanaData.noOfPostOffices}`
+              ` No of Post Offices: ${jotanaData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Police Stations: ${jotanaData.noOfPoliceStations}`
+              ` No of Police Stations: ${jotanaData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Fire Stations: ${jotanaData.noOfFireStations}`
+              ` No of Fire Stations: ${jotanaData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {jotanaData ? (
-              ` No of Hospitals: ${jotanaData.noOfHospitals}`
+              ` No of Hospitals: ${jotanaData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 
+
 const BechrajiMap = () => {
   const [bechrajiTotal, setBechrajiTotal] = useState(null);
   const [bechrajiData, setBechrajiData] = useState(null);
@@ -10,15 +11,18 @@ const BechrajiMap = () => {
   useEffect(() => {
     const fetchPopsDataBechraji = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops"
-          , {
+          "http://localhost:5000/agepops/",
+          { headers: {
+            Authorization: `Bearer ${token}`,
+          },
           withCredentials: true,
         });
         if (response.data && response.data.agePops) {
           const bechrajiData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Bechraji"
+            (entry) => entry.Taluka === "Bechraji" // Assuming this API still uses "Taluka"
           );
           if (bechrajiData) {
             const bechrajiTotal = bechrajiData.Total;
@@ -37,19 +41,21 @@ const BechrajiMap = () => {
 
     const fetchBechrajiData = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata",
-          {
-            withCredentials: true,
-          }
-        );
+          "http://localhost:5000/getcitiesdata/",
+          { headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
 
         // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Bechraji in the array
           const bechrajiData = response.data.data.find(
-            (city) => city.talukaName === "Bechraji"
+            (city) => city.taluka_name === "Becharaji" // Corrected the property name
           );
 
           // Check if Bechraji data is found
@@ -101,63 +107,63 @@ const BechrajiMap = () => {
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Schools: ${bechrajiData.noOfSchools}`
+              ` No of Schools: ${bechrajiData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Colleges: ${bechrajiData.noOfColleges}`
+              ` No of Colleges: ${bechrajiData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Universities: ${bechrajiData.noOfUniversities}`
+              ` No of Universities: ${bechrajiData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Bus Stations: ${bechrajiData.noOfBusStations}`
+              ` No of Bus Stations: ${bechrajiData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Railway Stations: ${bechrajiData.noOfRailwayStations}`
+              ` No of Railway Stations: ${bechrajiData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Post Offices: ${bechrajiData.noOfPostOffices}`
+              ` No of Post Offices: ${bechrajiData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Police Stations: ${bechrajiData.noOfPoliceStations}`
+              ` No of Police Stations: ${bechrajiData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Fire Stations: ${bechrajiData.noOfFireStations}`
+              ` No of Fire Stations: ${bechrajiData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {bechrajiData ? (
-              ` No of Hospitals: ${bechrajiData.noOfHospitals}`
+              ` No of Hospitals: ${bechrajiData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

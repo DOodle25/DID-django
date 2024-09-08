@@ -112,7 +112,7 @@ export default function App() {
   const [editedScheme, setEditedScheme] = useState({});
   const fetchSchemes = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/getschemes`, {
+      const res = await axios.get(`${API_BASE_URL}/getschemes/`, {
         withCredentials: true,
       });
 

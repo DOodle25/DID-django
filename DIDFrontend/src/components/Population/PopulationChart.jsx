@@ -12,10 +12,18 @@ const PopulationChart = () => {
   useEffect(() => {
     const getAgePops = async () => {
       try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          navigate("/login");
+          return;
+        }
         const res = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops"
-          , {
+          "http://localhost:5000/agepops/"
+          , { headers: {
+            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+          },
           withCredentials: true,
         });
         console.log("okay")

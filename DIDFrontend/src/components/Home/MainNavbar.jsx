@@ -53,11 +53,11 @@ export default function App() {
             Demography
           </NavLink>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <NavLink to="/register">
             Register
           </NavLink>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
