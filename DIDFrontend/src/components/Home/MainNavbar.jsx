@@ -10,18 +10,10 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import Logo from "../../assets/Logo";
 import { NavLink } from "react-router-dom";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  // const menuItems = [
-  //   "Population",
-  //   "Upload CSV",
-  //   "Demography",
-  //   "Profile",
-  // ];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} className="">
@@ -31,38 +23,33 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <NavLink to="/">
-            <Logo />
+          <NavLink to="/" className="">
+            <div className="font-semibold text-blue-900 text-lg leading-tight">District Integrated <br/> Dashboard</div>
           </NavLink>
         </NavbarBrand>
       </NavbarContent>
-
+{/* bg-blue-900 py-2 rounded-xl px-4 text-white hover:bg-blue-800 */}
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
+      <NavbarItem className="">
+          <NavLink to="/">
+            Dashboard
+          </NavLink>
+        </NavbarItem>
+        <NavbarItem className="">
           <NavLink to = "/population">
             Population
           </NavLink>
         </NavbarItem>
-        {/* <NavbarItem>
-          <NavLink to="/upload">
-            Upload CSV
-          </NavLink>
-        </NavbarItem> */}
-        <NavbarItem>
+        <NavbarItem className="">
           <NavLink to="/demography">
             Demography
           </NavLink>
         </NavbarItem>
-        {/* <NavbarItem>
-          <NavLink to="/register">
-            Register
-          </NavLink>
-        </NavbarItem> */}
-      </NavbarContent>
-      <NavbarContent justify="end">
+        
+
         <NavbarItem>
           <NavLink to="/profile">
-            <div className="bg-blue-300 py-2 rounded-xl px-4 text-gray-800 hover:bg-blue-200">
+            <div className="">
               Profile
             </div>
           </NavLink>
@@ -70,10 +57,10 @@ export default function App() {
       </NavbarContent>
       <NavbarMenu>
           <NavbarMenuItem className="flex flex-col">
-            <NavLink to="/population">Population</NavLink>
-            {/* <NavLink to="/upload">Upload CSV</NavLink> */}
-            <NavLink to="/demography">Demography</NavLink>
-            <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/"><div className="bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800">Dashboard</div></NavLink>
+            <NavLink to="/population"><div className="bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800">Population</div></NavLink>
+            <NavLink to="/demography"><div className="bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800">Demography</div></NavLink>
+            <NavLink to="/profile"><div className="bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800">Profile</div></NavLink>
           </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

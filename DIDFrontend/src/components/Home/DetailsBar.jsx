@@ -55,7 +55,7 @@ const DetailsBar = () => {
   return (
     <div className="w-full justify-between flex flex-row flex-wrap bg-slate- rounded-lg">
       <div className="flex flex-col items-center my-4">
-        <Card className="border border-black">
+        <Card className="">
           <CardBody className="min-w-[260px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
@@ -77,7 +77,7 @@ const DetailsBar = () => {
         </Card>
       </div>
       <div className="flex flex-col items-center my-4  ">
-      <Card className="border border-black">
+      <Card className="">
           <CardBody className="min-w-[260px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
@@ -99,7 +99,7 @@ const DetailsBar = () => {
         </Card>
       </div>
       <div className="flex flex-col items-center my-4 ">
-      <Card className="border border-black">
+      <Card className="">
           <CardBody className="min-w-[260px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
@@ -121,7 +121,7 @@ const DetailsBar = () => {
         </Card>
       </div>
       <div className="flex flex-col items-center my-4 ">
-      <Card className="border border-black">
+      <Card className="">
           <CardBody className="min-w-[260px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
@@ -143,7 +143,7 @@ const DetailsBar = () => {
         </Card>
       </div>
       <div className="flex flex-col items-center my-4 ">
-      <Card className="border border-black">
+      <Card className="">
           <CardBody className="min-w-[260px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">

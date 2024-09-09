@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import Lenis from "@studio-freight/lenis";
-// import ImageGallery from "./ImageGallery";
 import DetailsBar from "./DetailsBar";
 import Schemes from "../Schemes/Schemes";
 
@@ -20,7 +19,6 @@ requestAnimationFrame(raf);
 const Home = () => {
   return (
     <div className="">
-      {/* <ImageGallery /> */}
       <div className="main-data">
         <DetailsBar />
         <div className="flex justify-between gap-2">
