@@ -126,11 +126,9 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-# Optional: Additional CORS settings
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_METHODS = [
     "GET",
@@ -146,12 +144,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "access-control-allow-origin",
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173',
-]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -161,3 +153,70 @@ REST_FRAMEWORK = {
 
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# old cors settings
+
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# # Optional: Additional CORS settings
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_METHODS = [
+#     "GET",
+#     "POST",
+#     "PUT",
+#     "PATCH",
+#     "DELETE",
+#     "OPTIONS",
+# ]
+# CORS_ALLOW_HEADERS = [
+#     "content-type",
+#     "authorization",
+#     "x-csrftoken",
+#     "access-control-allow-origin",
+# ]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost:5173',
+# ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#     ]
+# }
+
+# # Custom user model
+# AUTH_USER_MODEL = 'users.User'
