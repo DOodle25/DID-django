@@ -19,12 +19,12 @@ const UnjhaMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const unjhaData = response.data.agePops.find(
+        if (response.data) {
+          const unjhaData = response.data.find(
             (entry) => entry.taluka_name === "Unjha"
           );
           if (unjhaData) {
-            const unjhaTotal = unjhaData.Total;
+            const unjhaTotal = unjhaData.total_population;
             console.log("Total for Unjha:", unjhaTotal);
             setUnjhaTotal(unjhaTotal);
           } else {

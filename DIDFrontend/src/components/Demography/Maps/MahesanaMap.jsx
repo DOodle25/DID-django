@@ -19,12 +19,12 @@ const MahesanaMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const mahesanaData = response.data.agePops.find(
+        if (response.data) {
+          const mahesanaData = response.data.find(
             (entry) => entry.taluka_name === "Mahesana"
           );
           if (mahesanaData) {
-            const mahesanaTotal = mahesanaData.Total;
+            const mahesanaTotal = mahesanaData.total_population;
             console.log("Total for Mahesana:", mahesanaTotal);
             setMahesanaTotal(mahesanaTotal);
           } else {

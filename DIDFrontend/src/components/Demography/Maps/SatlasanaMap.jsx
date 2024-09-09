@@ -19,12 +19,12 @@ const SatlasanaMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const satlasanaData = response.data.agePops.find(
+        if (response.data) {
+          const satlasanaData = response.data.find(
             (entry) => entry.taluka_name === "Satlasana"
           );
           if (satlasanaData) {
-            const satlasanaTotal = satlasanaData.Total;
+            const satlasanaTotal = satlasanaData.total_population;
             console.log("Total for Satlasana:", satlasanaTotal);
             setSatlasanaTotal(satlasanaTotal);
           } else {

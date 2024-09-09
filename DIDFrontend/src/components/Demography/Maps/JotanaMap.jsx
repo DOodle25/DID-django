@@ -19,12 +19,12 @@ const JotanaMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const jotanaData = response.data.agePops.find(
+        if (response.data) {
+          const jotanaData = response.data.find(
             (entry) => entry.taluka_name  === "Jotana"
           );
           if (jotanaData) {
-            const jotanaTotal = jotanaData.Total;
+            const jotanaTotal = jotanaData.total_population;
             console.log("Total for Jotana:", jotanaTotal);
             setJotanaTotal(jotanaTotal);
           } else {
@@ -99,10 +99,7 @@ const JotanaMap = () => {
       </Card>
       <Card className="border border-black">
         <CardBody>
-          <p>
-            {/* {jotanaTotal ? `Total population: ${jotanaTotal}` : <Spinner />} */}
-            Total population: 83523
-          </p>
+          <p>{jotanaTotal ? `Total population: ${jotanaTotal}` : <Spinner />}</p>
           <p>
             {jotanaData ? (
               ` No of Schools: ${jotanaData.no_of_schools}`

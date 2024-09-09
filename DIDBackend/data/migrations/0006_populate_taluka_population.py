@@ -3,7 +3,7 @@ from django.db import migrations
 def populate_taluka_population(apps, schema_editor):
     TalukaPopulation = apps.get_model('data', 'TalukaPopulation')
     TalukaPopulation.objects.bulk_create([
-        TalukaPopulation(taluka_name='Becharaji', total_population=12574),
+        TalukaPopulation(taluka_name='Bechraji', total_population=12574),
         TalukaPopulation(taluka_name='Jotana', total_population=7118),
         TalukaPopulation(taluka_name='Kadi', total_population=260934),
         TalukaPopulation(taluka_name='Kheralu', total_population=20143),

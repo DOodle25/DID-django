@@ -12,19 +12,23 @@ const KadiMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops/"
-          , { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
-        if (response.data && response.data.agePops) {
-          const kadiData = response.data.agePops.find(
-            (entry) => entry.taluka_name === "Kadi (SC)"
+          "http://localhost:5000/agepops/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+            },
+            withCredentials: true,
+          }
+        );
+        
+        if (response.data) {
+          // Assuming response.data is an array of objects
+          const kadiData = response.data.find(
+            (entry) => entry.taluka_name === "Kadi"
           );
+    
           if (kadiData) {
-            const kadiTotal = kadiData.Total;
+            const kadiTotal = kadiData.total_population;
             console.log("Total for Kadi:", kadiTotal);
             setKadiTotal(kadiTotal);
           } else {

@@ -19,12 +19,12 @@ const VadnagarMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const vadnagarData = response.data.agePops.find(
+        if (response.data) {
+          const vadnagarData = response.data.find(
             (entry) => entry.taluka_name === "Vadnagar"
           );
           if (vadnagarData) {
-            const vadnagarTotal = vadnagarData.Total;
+            const vadnagarTotal = vadnagarData.total_population;
             console.log("Total for Vadnagar:", vadnagarTotal);
             setVadnagarTotal(vadnagarTotal);
           } else {

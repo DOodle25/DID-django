@@ -20,12 +20,14 @@ const BechrajiMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const bechrajiData = response.data.agePops.find(
+        console.log("okay");
+        console.log(response.data);
+        if (response.data) {
+          const bechrajiData = response.data.find(
             (entry) => entry.taluka_name  === "Bechraji" // Assuming this API still uses "Taluka"
           );
           if (bechrajiData) {
-            const bechrajiTotal = bechrajiData.Total;
+            const bechrajiTotal = bechrajiData.total_population;
             console.log("Total for Bechraji:", bechrajiTotal);
             setBechrajiTotal(bechrajiTotal);
           } else {
@@ -101,10 +103,7 @@ const BechrajiMap = () => {
       </Card>
       <Card className="border border-black">
         <CardBody>
-          <p>
-            {/* {bechrajiTotal ? `Total population: ${bechrajiTotal}` : <Spinner />} */}
-            Total population: 231024
-          </p>
+          <p>{bechrajiTotal ? `Total population: ${bechrajiTotal}` : <Spinner />}</p>
           <p>
             {bechrajiData ? (
               ` No of Schools: ${bechrajiData.no_of_schools}`

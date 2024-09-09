@@ -19,12 +19,12 @@ const VijapurMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const vijapurData = response.data.agePops.find(
+        if (response.data) {
+          const vijapurData = response.data.find(
             (entry) => entry.taluka_name === "Vijapur"
           );
           if (vijapurData) {
-            const vijapurTotal = vijapurData.Total;
+            const vijapurTotal = vijapurData.total_population;
             console.log("Total for Vijapur:", vijapurTotal);
             setVijapurTotal(vijapurTotal);
           } else {

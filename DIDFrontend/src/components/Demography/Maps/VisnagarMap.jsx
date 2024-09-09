@@ -19,12 +19,12 @@ const VisnagarMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const visnagarData = response.data.agePops.find(
+        if (response.data) {
+          const visnagarData = response.data.find(
             (entry) => entry.taluka_name === "Visnagar"
           );
           if (visnagarData) {
-            const visnagarTotal = visnagarData.Total;
+            const visnagarTotal = visnagarData.total_population;
             console.log("Total for Visnagar:", visnagarTotal);
             setVisnagarTotal(visnagarTotal);
           } else {

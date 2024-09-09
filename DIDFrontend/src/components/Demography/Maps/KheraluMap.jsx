@@ -19,12 +19,12 @@ const KheraluMap = () => {
           },
           withCredentials: true,
         });
-        if (response.data && response.data.agePops) {
-          const kheraluData = response.data.agePops.find(
+        if (response.data) {
+          const kheraluData = response.data.find(
             (entry) => entry.taluka_name === "Kheralu"
           );
           if (kheraluData) {
-            const kheraluTotal = kheraluData.Total;
+            const kheraluTotal = kheraluData.total_population;
             console.log("Total for Kheralu:", kheraluTotal);
             setKheraluTotal(kheraluTotal);
           } else {
