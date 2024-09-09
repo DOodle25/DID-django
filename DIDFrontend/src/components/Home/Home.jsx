@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import Lenis from "@studio-freight/lenis";
-import DetailsBar from "./DetailsBar";
 import Schemes from "../Schemes/Schemes";
 
 const lenis = new Lenis();
@@ -20,7 +19,6 @@ const Home = () => {
   return (
     <div className="">
       <div className="main-data">
-        <DetailsBar />
         <div className="flex justify-between gap-2">
           <div className="w-full">
             <Schemes />

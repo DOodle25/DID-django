@@ -16,6 +16,13 @@ const AddSchemes = () => {
   const [leadperson, setLeadPerson] = useState("");
   const navigate = useNavigate();
 
+  const statusOptions = [
+  { name: "Approved", uid: "Approved" },
+  { name: "Pending Approval", uid: "Pending Approval" },
+  { name: "In Progress", uid: "In Progress" },
+  { name: "Completed", uid: "Completed" },
+  { name: "Pending", uid: "Pending" }
+];
   const handleAddScheme = async () => {
     try {
       const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
@@ -59,8 +66,8 @@ const AddSchemes = () => {
         <Toaster />
       </div>
       <Card className="w-96 border border-black ">
-        <CardHeader className="flex gap-3">
-          <div className="text-xl font-bold">Add Scheme</div>
+        <CardHeader className="flex gap-3 bg-blue-900">
+          <div className="text-xl font-bold text-white">Add Scheme</div>
         </CardHeader>
         <Divider />
         <CardBody>
@@ -131,8 +138,8 @@ const AddSchemes = () => {
             />
             <button
               type="button"
+              className="btn-primary bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800 w-full mt-4 py-2"
               onClick={handleAddScheme}
-              className="btn-primary"
               aria-label="Register"
             >
               Add Scheme

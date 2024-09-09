@@ -53,10 +53,10 @@ const DetailsBar = () => {
   const population = selectedTalukaData ? selectedTalukaData.total_population : "Data not available";
 
   return (
-    <div className="w-full justify-between flex flex-row flex-wrap bg-slate- rounded-lg">
+    <div className="w-full justify-around flex flex-row flex-wrap bg-slate- rounded-lg">
       <div className="flex flex-col items-center my-4">
         <Card className="">
-          <CardBody className="min-w-[260px] ">
+          <CardBody className="min-w-[230px]">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
               <Avatar
@@ -64,7 +64,7 @@ const DetailsBar = () => {
                 isBordered
                 color="default"
                 fallback={
-                  <UsersFour size={22} color="#74c69d" weight="duotone" />
+                  <UsersFour size={22} color="blue-900" weight="duotone" />
                 }
               />
             </div>
@@ -78,7 +78,7 @@ const DetailsBar = () => {
       </div>
       <div className="flex flex-col items-center my-4  ">
       <Card className="">
-          <CardBody className="min-w-[260px] ">
+          <CardBody className="min-w-[230px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
               <Avatar
@@ -86,7 +86,7 @@ const DetailsBar = () => {
                 isBordered
                 color="default"
                 fallback={
-                  <MapTrifold size={22} color="#74c69d" weight="duotone" />
+                  <MapTrifold size={22} color="blue-900" weight="duotone" />
                 }
               />
             </div>
@@ -100,7 +100,7 @@ const DetailsBar = () => {
       </div>
       <div className="flex flex-col items-center my-4 ">
       <Card className="">
-          <CardBody className="min-w-[260px] ">
+          <CardBody className="min-w-[230px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
               <Avatar
@@ -108,7 +108,7 @@ const DetailsBar = () => {
                 isBordered
                 color="default"
                 fallback={
-                  <Siren size={22} color="#74c69d" weight="duotone" />
+                  <Siren size={22} color="blue-900" weight="duotone" />
                 }
               />
             </div>
@@ -122,7 +122,7 @@ const DetailsBar = () => {
       </div>
       <div className="flex flex-col items-center my-4 ">
       <Card className="">
-          <CardBody className="min-w-[260px] ">
+          <CardBody className="min-w-[230px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
               <Avatar
@@ -130,7 +130,7 @@ const DetailsBar = () => {
                 isBordered
                 color="default"
                 fallback={
-                  <MapPinLine size={22} color="#74c69d" weight="duotone" />
+                  <MapPinLine size={22} color="blue-900" weight="duotone" />
                 }
               />
             </div>
@@ -144,7 +144,7 @@ const DetailsBar = () => {
       </div>
       <div className="flex flex-col items-center my-4 ">
       <Card className="">
-          <CardBody className="min-w-[260px] ">
+          <CardBody className="min-w-[230px] ">
             <div className="flex justify-start items-center gap-5 ">
             <div className="flex justify-center my-2">
               <Avatar
@@ -152,7 +152,7 @@ const DetailsBar = () => {
                 isBordered
                 color="default"
                 fallback={
-                  <Plant size={22} color="#74c69d" weight="duotone" />
+                  <Plant size={22} color="blue-900" weight="duotone" />
                 }
               />
             </div>

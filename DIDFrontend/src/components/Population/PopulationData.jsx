@@ -59,14 +59,14 @@ const PopulationData = () => {
     <div className="flex" style={{ fontSize: "16px" }}>
       <ul>
         {labels.map((label, index) => (
-          <li className="font-bold" key={index}>
+          <li className="bg-black rounded-md mb-2 px-4 mr-4 text-white hover:bg-blue-800" key={index}>
             {label}:
           </li>
         ))}
       </ul>
       <ul>
         {data.map((datum, index) => (
-          <li key={index}>{datum}</li>
+          <li className="rounded-xl mb-2 px-4 text-black hover:bg-black hover:text-white" key={index}>{datum}</li>
         ))}
       </ul>
     </div>

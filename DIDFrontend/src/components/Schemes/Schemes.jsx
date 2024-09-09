@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -33,23 +31,22 @@ import {
   ModalFooter,
 } from "@nextui-org/react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import { Trash } from "@phosphor-icons/react";
 
 export default function App() {
   const API_BASE_URL =
     // "https://myapp.vercel.app"
     "http://localhost:5000";
   const columns = [
-    { name: "SR.NO", uid: "srno", sortable: true },
+    // { name: "SR.NO", uid: "srno", sortable: true },
     { name: "SCHEME NAME", uid: "schemename", sortable: true },
+    { name: "LAST EDITED BY", uid: "lasteditedby", sortable: true },
+    { name: "LEAD PERSON", uid: "leadperson", sortable: true },
     { name: "MINISTRY", uid: "ministry", sortable: true },
+    { name: "STATUS", uid: "status", sortable: true },
     { name: "DESCRIPTION", uid: "desc" },
     { name: "PLACE", uid: "place" },
     { name: "FUND GRANTED", uid: "moneygranted", sortable: true },
     { name: "FUND SPENT", uid: "moneyspent", sortable: true },
-    { name: "LEAD PERSON", uid: "leadperson", sortable: true },
-    { name: "LAST EDITED BY", uid: "lasteditedby", sortable: true },
-    { name: "STATUS", uid: "status", sortable: true },
     { name: "PROGRESS", uid: "progress", sortable: true },
     { name: "ACTIONS", uid: "actions" },
   ];
@@ -543,19 +540,10 @@ export default function App() {
               </DropdownMenu>
             </Dropdown>
             <NavLink to="/addscheme">
-              <Button color="primary" endContent={<PlusIcon />}>
+              <Button className="bg-blue-900" color="primary" endContent={<PlusIcon />}>
                 Add New
               </Button>
             </NavLink>
-            {/* <NavLink>
-              <Button
-                color="danger"
-                endContent={<Trash size={22} />}
-                onClick={handleBulkDelete}
-              >
-                Bulk Delete
-              </Button>
-            </NavLink> */}
           </div>
         </div>
         <div className="flex justify-between items-center">

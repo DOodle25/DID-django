@@ -63,8 +63,8 @@ const PopulationChart = () => {
     datasets: [
       {
         label: "Population",
-        backgroundColor: "#e28413",
-        borderColor: "#e28413",
+        backgroundColor: "blue-900",
+        borderColor: "blue-900",
         data: data,
       },
     ],
@@ -81,7 +81,7 @@ const PopulationChart = () => {
 
   return (
     <div>
-      <Card className="w-full mx-4 border border-black">
+      <Card className="w-full">
         <CardBody>
           <Bar
             data={chartData}
