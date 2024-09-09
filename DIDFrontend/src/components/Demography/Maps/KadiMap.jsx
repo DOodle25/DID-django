@@ -21,7 +21,7 @@ const KadiMap = () => {
         });
         if (response.data && response.data.agePops) {
           const kadiData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Kadi (SC)"
+            (entry) => entry.taluka_name === "Kadi (SC)"
           );
           if (kadiData) {
             const kadiTotal = kadiData.Total;
@@ -53,7 +53,7 @@ const KadiMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Kadi in the array
           const kadiData = response.data.data.find(
-            (city) => city.talukaName === "Kadi"
+            (city) => city.taluka_name === "Kadi"
           );
 
           // Check if Kadi data is found
@@ -101,60 +101,60 @@ const KadiMap = () => {
         <CardBody>
           <p>{kadiTotal ? `Total population: ${kadiTotal}` : <Spinner />}</p>
           <p>
-            {kadiData ? ` No of Schools: ${kadiData.noOfSchools}` : <Spinner />}
+            {kadiData ? ` No of Schools: ${kadiData.no_of_schools}` : <Spinner />}
           </p>
           <p>
             {kadiData ? (
-              ` No of Colleges: ${kadiData.noOfColleges}`
+              ` No of Colleges: ${kadiData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Universities: ${kadiData.noOfUniversities}`
+              ` No of Universities: ${kadiData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Bus Stations: ${kadiData.noOfBusStations}`
+              ` No of Bus Stations: ${kadiData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Railway Stations: ${kadiData.noOfRailwayStations}`
+              ` No of Railway Stations: ${kadiData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Post Offices: ${kadiData.noOfPostOffices}`
+              ` No of Post Offices: ${kadiData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Police Stations: ${kadiData.noOfPoliceStations}`
+              ` No of Police Stations: ${kadiData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Fire Stations: ${kadiData.noOfFireStations}`
+              ` No of Fire Stations: ${kadiData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kadiData ? (
-              ` No of Hospitals: ${kadiData.noOfHospitals}`
+              ` No of Hospitals: ${kadiData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

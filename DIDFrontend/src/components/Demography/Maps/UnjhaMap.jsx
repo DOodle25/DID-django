@@ -21,7 +21,7 @@ const UnjhaMap = () => {
         });
         if (response.data && response.data.agePops) {
           const unjhaData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Unjha"
+            (entry) => entry.taluka_name === "Unjha"
           );
           if (unjhaData) {
             const unjhaTotal = unjhaData.Total;
@@ -53,7 +53,7 @@ const UnjhaMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Unjha in the array
           const unjhaData = response.data.data.find(
-            (city) => city.talukaName === "Unjha"
+            (city) => city.taluka_name === "Unjha"
           );
 
           // Check if Unjha data is found
@@ -102,63 +102,63 @@ const UnjhaMap = () => {
           <p>{unjhaTotal ? `Total population: ${unjhaTotal}` : <Spinner />}</p>
           <p>
             {unjhaData ? (
-              ` No of Schools: ${unjhaData.noOfSchools}`
+              ` No of Schools: ${unjhaData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Colleges: ${unjhaData.noOfColleges}`
+              ` No of Colleges: ${unjhaData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Universities: ${unjhaData.noOfUniversities}`
+              ` No of Universities: ${unjhaData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Bus Stations: ${unjhaData.noOfBusStations}`
+              ` No of Bus Stations: ${unjhaData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Railway Stations: ${unjhaData.noOfRailwayStations}`
+              ` No of Railway Stations: ${unjhaData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Post Offices: ${unjhaData.noOfPostOffices}`
+              ` No of Post Offices: ${unjhaData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Police Stations: ${unjhaData.noOfPoliceStations}`
+              ` No of Police Stations: ${unjhaData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Fire Stations: ${unjhaData.noOfFireStations}`
+              ` No of Fire Stations: ${unjhaData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {unjhaData ? (
-              ` No of Hospitals: ${unjhaData.noOfHospitals}`
+              ` No of Hospitals: ${unjhaData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

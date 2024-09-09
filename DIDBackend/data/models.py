@@ -1,11 +1,12 @@
 from django.db import models
 
-class AgePopulation(models.Model):
-    age_group = models.CharField(max_length=100)  # example field
-    population = models.IntegerField()
+
+class TalukaPopulation(models.Model):
+    taluka_name = models.CharField(max_length=100, unique=True)
+    total_population = models.IntegerField()
 
     def __str__(self):
-        return f'{self.age_group}: {self.population}'
+        return self.taluka_name
 
 # models.py
 

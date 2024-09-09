@@ -21,7 +21,7 @@ const KheraluMap = () => {
         });
         if (response.data && response.data.agePops) {
           const kheraluData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Kheralu"
+            (entry) => entry.taluka_name === "Kheralu"
           );
           if (kheraluData) {
             const kheraluTotal = kheraluData.Total;
@@ -53,7 +53,7 @@ const KheraluMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Visnagar in the array
           const kheraluData = response.data.data.find(
-            (city) => city.talukaName === "Kheralu"
+            (city) => city.taluka_name === "Kheralu"
           );
 
           // Check if Visnagar data is found
@@ -104,63 +104,63 @@ const KheraluMap = () => {
           </p>
           <p>
             {kheraluData ? (
-              ` No of Schools: ${kheraluData.noOfSchools}`
+              ` No of Schools: ${kheraluData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Colleges: ${kheraluData.noOfColleges}`
+              ` No of Colleges: ${kheraluData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Universities: ${kheraluData.noOfUniversities}`
+              ` No of Universities: ${kheraluData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Bus Stations: ${kheraluData.noOfBusStations}`
+              ` No of Bus Stations: ${kheraluData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Railway Stations: ${kheraluData.noOfRailwayStations}`
+              ` No of Railway Stations: ${kheraluData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Post Offices: ${kheraluData.noOfPostOffices}`
+              ` No of Post Offices: ${kheraluData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Police Stations: ${kheraluData.noOfPoliceStations}`
+              ` No of Police Stations: ${kheraluData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Fire Stations: ${kheraluData.noOfFireStations}`
+              ` No of Fire Stations: ${kheraluData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {kheraluData ? (
-              ` No of Hospitals: ${kheraluData.noOfHospitals}`
+              ` No of Hospitals: ${kheraluData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

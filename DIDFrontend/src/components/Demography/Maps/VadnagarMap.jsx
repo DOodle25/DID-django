@@ -21,7 +21,7 @@ const VadnagarMap = () => {
         });
         if (response.data && response.data.agePops) {
           const vadnagarData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Vadnagar"
+            (entry) => entry.taluka_name === "Vadnagar"
           );
           if (vadnagarData) {
             const vadnagarTotal = vadnagarData.Total;
@@ -53,7 +53,7 @@ const VadnagarMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Visnagar in the array
           const vadnagarData = response.data.data.find(
-            (city) => city.talukaName === "Vadnagar"
+            (city) => city.taluka_name === "Vadnagar"
           );
 
           // Check if Visnagar data is found
@@ -109,63 +109,63 @@ const VadnagarMap = () => {
           <p>{`Total population: 234123`}</p>
           <p>
             {vadnagarData ? (
-              ` No of Schools: ${vadnagarData.noOfSchools}`
+              ` No of Schools: ${vadnagarData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Colleges: ${vadnagarData.noOfColleges}`
+              ` No of Colleges: ${vadnagarData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Universities: ${vadnagarData.noOfUniversities}`
+              ` No of Universities: ${vadnagarData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Bus Stations: ${vadnagarData.noOfBusStations}`
+              ` No of Bus Stations: ${vadnagarData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Railway Stations: ${vadnagarData.noOfRailwayStations}`
+              ` No of Railway Stations: ${vadnagarData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Post Offices: ${vadnagarData.noOfPostOffices}`
+              ` No of Post Offices: ${vadnagarData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Police Stations: ${vadnagarData.noOfPoliceStations}`
+              ` No of Police Stations: ${vadnagarData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Fire Stations: ${vadnagarData.noOfFireStations}`
+              ` No of Fire Stations: ${vadnagarData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vadnagarData ? (
-              ` No of Hospitals: ${vadnagarData.noOfHospitals}`
+              ` No of Hospitals: ${vadnagarData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

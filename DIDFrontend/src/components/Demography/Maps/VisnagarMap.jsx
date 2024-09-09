@@ -21,7 +21,7 @@ const VisnagarMap = () => {
         });
         if (response.data && response.data.agePops) {
           const visnagarData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Visnagar"
+            (entry) => entry.taluka_name === "Visnagar"
           );
           if (visnagarData) {
             const visnagarTotal = visnagarData.Total;
@@ -52,7 +52,7 @@ const VisnagarMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Visnagar in the array
           const visnagarData = response.data.data.find(
-            (city) => city.talukaName === "Visnagar"
+            (city) => city.taluka_name === "Visnagar"
           );
 
           // Check if Visnagar data is found
@@ -103,63 +103,63 @@ const VisnagarMap = () => {
           </p>
           <p>
             {visnagarData ? (
-              ` No of Schools: ${visnagarData.noOfSchools}`
+              ` No of Schools: ${visnagarData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Colleges: ${visnagarData.noOfColleges}`
+              ` No of Colleges: ${visnagarData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Universities: ${visnagarData.noOfUniversities}`
+              ` No of Universities: ${visnagarData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Bus Stations: ${visnagarData.noOfBusStations}`
+              ` No of Bus Stations: ${visnagarData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Railway Stations: ${visnagarData.noOfRailwayStations}`
+              ` No of Railway Stations: ${visnagarData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Post Offices: ${visnagarData.noOfPostOffices}`
+              ` No of Post Offices: ${visnagarData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Police Stations: ${visnagarData.noOfPoliceStations}`
+              ` No of Police Stations: ${visnagarData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Fire Stations: ${visnagarData.noOfFireStations}`
+              ` No of Fire Stations: ${visnagarData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {visnagarData ? (
-              ` No of Hospitals: ${visnagarData.noOfHospitals}`
+              ` No of Hospitals: ${visnagarData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

@@ -21,7 +21,7 @@ const MahesanaMap = () => {
         });
         if (response.data && response.data.agePops) {
           const mahesanaData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Mahesana"
+            (entry) => entry.taluka_name === "Mahesana"
           );
           if (mahesanaData) {
             const mahesanaTotal = mahesanaData.Total;
@@ -53,7 +53,7 @@ const MahesanaMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Mahesana in the array
           const mahesanaData = response.data.data.find(
-            (city) => city.talukaName === "Mahesana"
+            (city) => city.taluka_name === "Mahesana"
           );
 
           // Check if Mahesana data is found
@@ -104,63 +104,63 @@ const MahesanaMap = () => {
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Schools: ${mahesanaData.noOfSchools}`
+              ` No of Schools: ${mahesanaData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Colleges: ${mahesanaData.noOfColleges}`
+              ` No of Colleges: ${mahesanaData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Universities: ${mahesanaData.noOfUniversities}`
+              ` No of Universities: ${mahesanaData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Bus Stations: ${mahesanaData.noOfBusStations}`
+              ` No of Bus Stations: ${mahesanaData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Railway Stations: ${mahesanaData.noOfRailwayStations}`
+              ` No of Railway Stations: ${mahesanaData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Post Offices: ${mahesanaData.noOfPostOffices}`
+              ` No of Post Offices: ${mahesanaData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Police Stations: ${mahesanaData.noOfPoliceStations}`
+              ` No of Police Stations: ${mahesanaData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Fire Stations: ${mahesanaData.noOfFireStations}`
+              ` No of Fire Stations: ${mahesanaData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {mahesanaData ? (
-              ` No of Hospitals: ${mahesanaData.noOfHospitals}`
+              ` No of Hospitals: ${mahesanaData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

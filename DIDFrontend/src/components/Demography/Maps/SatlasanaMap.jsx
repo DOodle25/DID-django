@@ -21,7 +21,7 @@ const SatlasanaMap = () => {
         });
         if (response.data && response.data.agePops) {
           const satlasanaData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Satlasana"
+            (entry) => entry.taluka_name === "Satlasana"
           );
           if (satlasanaData) {
             const satlasanaTotal = satlasanaData.Total;
@@ -53,7 +53,7 @@ const SatlasanaMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Visnagar in the array
           const satlasanaData = response.data.data.find(
-            (city) => city.talukaName === "Satlasana"
+            (city) => city.taluka_name === "Satlasana"
           );
 
           // Check if Visnagar data is found
@@ -109,63 +109,63 @@ const SatlasanaMap = () => {
           <p>{`Total population: 234123`}</p>
           <p>
             {satlasanaData ? (
-              ` No of Schools: ${satlasanaData.noOfSchools}`
+              ` No of Schools: ${satlasanaData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Colleges: ${satlasanaData.noOfColleges}`
+              ` No of Colleges: ${satlasanaData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Universities: ${satlasanaData.noOfUniversities}`
+              ` No of Universities: ${satlasanaData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Bus Stations: ${satlasanaData.noOfBusStations}`
+              ` No of Bus Stations: ${satlasanaData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Railway Stations: ${satlasanaData.noOfRailwayStations}`
+              ` No of Railway Stations: ${satlasanaData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Post Offices: ${satlasanaData.noOfPostOffices}`
+              ` No of Post Offices: ${satlasanaData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Police Stations: ${satlasanaData.noOfPoliceStations}`
+              ` No of Police Stations: ${satlasanaData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Fire Stations: ${satlasanaData.noOfFireStations}`
+              ` No of Fire Stations: ${satlasanaData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {satlasanaData ? (
-              ` No of Hospitals: ${satlasanaData.noOfHospitals}`
+              ` No of Hospitals: ${satlasanaData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

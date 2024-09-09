@@ -21,7 +21,7 @@ const JotanaMap = () => {
         });
         if (response.data && response.data.agePops) {
           const jotanaData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Jotana"
+            (entry) => entry.taluka_name  === "Jotana"
           );
           if (jotanaData) {
             const jotanaTotal = jotanaData.Total;
@@ -53,7 +53,7 @@ const JotanaMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Jotana in the array
           const jotanaData = response.data.data.find(
-            (city) => city.talukaName === "Jotana"
+            (city) => city.taluka_name === "Jotana"
           );
 
           // Check if Jotana data is found

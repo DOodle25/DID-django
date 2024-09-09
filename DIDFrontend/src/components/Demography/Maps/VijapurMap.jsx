@@ -21,7 +21,7 @@ const VijapurMap = () => {
         });
         if (response.data && response.data.agePops) {
           const vijapurData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Vijapur"
+            (entry) => entry.taluka_name === "Vijapur"
           );
           if (vijapurData) {
             const vijapurTotal = vijapurData.Total;
@@ -53,7 +53,7 @@ const VijapurMap = () => {
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Vijapur in the array
           const vijapurData = response.data.data.find(
-            (city) => city.talukaName === "Vijapur"
+            (city) => city.taluka_name === "Vijapur"
           );
 
           // Check if Vijapur data is found
@@ -111,63 +111,63 @@ const VijapurMap = () => {
           </p>
           <p>
             {vijapurData ? (
-              ` No of Schools: ${vijapurData.noOfSchools}`
+              ` No of Schools: ${vijapurData.no_of_schools}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Colleges: ${vijapurData.noOfColleges}`
+              ` No of Colleges: ${vijapurData.no_of_colleges}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Universities: ${vijapurData.noOfUniversities}`
+              ` No of Universities: ${vijapurData.no_of_universities}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Bus Stations: ${vijapurData.noOfBusStations}`
+              ` No of Bus Stations: ${vijapurData.no_of_bus_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Railway Stations: ${vijapurData.noOfRailwayStations}`
+              ` No of Railway Stations: ${vijapurData.no_of_railway_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Post Offices: ${vijapurData.noOfPostOffices}`
+              ` No of Post Offices: ${vijapurData.no_of_post_offices}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Police Stations: ${vijapurData.noOfPoliceStations}`
+              ` No of Police Stations: ${vijapurData.no_of_police_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Fire Stations: ${vijapurData.noOfFireStations}`
+              ` No of Fire Stations: ${vijapurData.no_of_fire_stations}`
             ) : (
               <Spinner />
             )}
           </p>
           <p>
             {vijapurData ? (
-              ` No of Hospitals: ${vijapurData.noOfHospitals}`
+              ` No of Hospitals: ${vijapurData.no_of_hospitals}`
             ) : (
               <Spinner />
             )}

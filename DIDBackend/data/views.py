@@ -3,34 +3,29 @@ from rest_framework.response import Response
 from .models import CitiesData
 from .serializers import CityDataSerializer
 from rest_framework.decorators import api_view
-from .models import AgePopulation
-from .serializers import AgePopulationSerializer, CityDataSerializer
+from .serializers import TalukaPopulation, CityDataSerializer
+from django.http import JsonResponse
 
 @api_view(['GET'])
-def get_age_population(request):
+def get_taluka_population(request):
     try:
-        age_pops = AgePopulation.objects.all()
-        serializer = AgePopulationSerializer(age_pops, many=True)
-        return Response({
-            'agePops': serializer.data,
-            'user': request.user.username,  # Adjust based on how you're managing authentication
-            'message': "Hello from Django agepop API"
-        })
+        populations = TalukaPopulation.objects.all().values('taluka_name', 'total_population')
+        return JsonResponse(list(populations), safe=False)
     except Exception as e:
-        return Response({'message': str(e)}, status=404)
+        return JsonResponse({'error': str(e)}, status=500)
 
 @api_view(['GET'])
 def get_cities_data(request):
     print("Request received for get_cities_data")  # Debug: Start of the view
     
     try:
-        print("Querying CitiesData")  # Debug: Before querying the database
+        # print("Querying CitiesData")  # Debug: Before querying the database
         cities_data = CitiesData.objects.all()
-        print(f"Number of records retrieved: {cities_data.count()}")  # Debug: Number of records
+        # print(f"Number of records retrieved: {cities_data.count()}")  # Debug: Number of records
         
-        print("Serializing data")  # Debug: Before serializing
+        # print("Serializing data")  # Debug: Before serializing
         serializer = CityDataSerializer(cities_data, many=True)
-        print(f"Serialized data: {serializer.data}")  # Debug: Serialized data
+        # print(f"Serialized data: {serializer.data}")  # Debug: Serialized data
         
         return Response({
             "success": True,
@@ -40,7 +35,7 @@ def get_cities_data(request):
         }, status=status.HTTP_200_OK)
         
     except Exception as error:
-        print(f"Exception occurred: {error}")  # Debug: Print the exception
+        # print(f"Exception occurred: {error}")  # Debug: Print the exception
         return Response({
             "success": False,
             "message": "Internal Server Error"

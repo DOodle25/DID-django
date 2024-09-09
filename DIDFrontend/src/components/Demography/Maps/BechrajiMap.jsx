@@ -22,7 +22,7 @@ const BechrajiMap = () => {
         });
         if (response.data && response.data.agePops) {
           const bechrajiData = response.data.agePops.find(
-            (entry) => entry.Taluka === "Bechraji" // Assuming this API still uses "Taluka"
+            (entry) => entry.taluka_name  === "Bechraji" // Assuming this API still uses "Taluka"
           );
           if (bechrajiData) {
             const bechrajiTotal = bechrajiData.Total;
