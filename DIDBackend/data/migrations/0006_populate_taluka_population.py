@@ -13,6 +13,7 @@ def populate_taluka_population(apps, schema_editor):
         TalukaPopulation(taluka_name='Vadnagar', total_population=27790),
         TalukaPopulation(taluka_name='Vijapur', total_population=25558),
         TalukaPopulation(taluka_name='Visnagar', total_population=24000),
+        TalukaPopulation(taluka_name='Total', total_population=786384),
     ])
 
 class Migration(migrations.Migration):

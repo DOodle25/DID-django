@@ -1,7 +1,8 @@
+# serializers.py
 from rest_framework import serializers
-from .models import SchemeData
+from .models import Scheme
 
-class SchemeDataSerializer(serializers.ModelSerializer):
+class SchemeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SchemeData
-        fields = ['id', 'schemename', 'ministry', 'desc', 'place', 'moneygranted', 'moneyspent', 'status', 'progress', 'leadperson', 'lasteditedby', 'timeOfschemeAdded', 'date', 'srno']
+        model = Scheme
+        fields = '__all__'

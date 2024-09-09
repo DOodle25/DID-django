@@ -152,7 +152,7 @@ export default function App() {
   const handleSaveEdit = async () => {
     try {
       const res = await axios.put(
-        `${API_BASE_URL}/updatescheme/${editedScheme._id}`,
+        `${API_BASE_URL}/updatescheme/${editedScheme._id}/`,
         editedScheme,
         {
           withCredentials: true,

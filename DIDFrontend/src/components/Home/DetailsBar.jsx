@@ -18,38 +18,40 @@ const DetailsBar = () => {
   const [agePops, setAgePops] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    const token = localStorage.getItem("token");
     const getAgePops = async () => {
       try {
         const res = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops"
-          , {
+          "http://localhost:5000/agepops/"
+          ,{ headers: {
+            Authorization: `Bearer ${token}`,
+          },
           withCredentials: true,
         });
-        console.log("okay")
-        console.log(res.data.agePops);
+        // console.log("okay")
+        // console.log(res.data);
 
         if (res.status !== 200) {
           navigate("/login");
           const error = new Error(res.error);
           throw error;
         }
-        const sortedData = res.data.agePops.sort((a, b) => a.Sr.No - b.Sr.No);
-        setAgePops(sortedData);
-        console.log(agePops); // Update state with the received data
+        setAgePops(res.data);
       } catch (err) {
         navigate("/login");
         console.log(err);
       }
-      // Handle other errors, e.g., network issues
     };
 
     getAgePops();
   }, [navigate]);
-  const selectedTalukaData = agePops.find((item) => item.Taluka === "Total");
-  const population = selectedTalukaData
-    ? selectedTalukaData["Total"]
-    : "Data not available";
+  // console.log(agePops);
+  const selectedTalukaData = agePops.find(
+    (entry) => entry.taluka_name  === "Total" // Assuming this API still uses "Taluka"
+  );
+  const population = selectedTalukaData ? selectedTalukaData.total_population : "Data not available";
+
   return (
     <div className="w-full justify-between flex flex-row flex-wrap bg-slate- rounded-lg">
       <div className="flex flex-col items-center my-4">

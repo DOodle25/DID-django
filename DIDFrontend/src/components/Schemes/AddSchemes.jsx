@@ -20,7 +20,7 @@ const AddSchemes = () => {
     try {
       const response = await axios.post(
         // "https://myapp.vercel.app/addScheme"
-        "http://localhost:5000/addScheme"
+        "http://localhost:5000/addScheme/"
         ,
         {
           schemename,
