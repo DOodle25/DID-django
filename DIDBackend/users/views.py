@@ -17,6 +17,7 @@ from django.http import JsonResponse
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 # User = get_user_model()
 
@@ -40,13 +41,13 @@ class UserProfileUpdateView(views.APIView):
         last_name = user_info.get('last_name', None)
 
         # Print extracted data
-        print(f'Authorization Header: {authorization_header}')
-        print(f'Username: {username}')
-        print(f'Email: {email}')
-        print(f'Password: {password}')
-        print(f'Role: {role}')
-        print(f'First Name: {first_name}')
-        print(f'Last Name: {last_name}')
+        # print(f'Authorization Header: {authorization_header}')
+        # print(f'Username: {username}')
+        # print(f'Email: {email}')
+        # print(f'Password: {password}')
+        # print(f'Role: {role}')
+        # print(f'First Name: {first_name}')
+        # print(f'Last Name: {last_name}')
         
         # Extract token
         if auth_header:
@@ -156,7 +157,10 @@ class LoginUserView(views.APIView):
             session = ActiveSession.objects.create(
                 user=user, token=_generate_jwt_token(user)
             )
-
+    
+        # Update the last login time
+        user.last_login = timezone.now()
+        user.save()
         return Response({
             "success": True,
             "token": session.token,
