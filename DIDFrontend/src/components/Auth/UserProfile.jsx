@@ -85,9 +85,9 @@ export default function UserProfile() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <Card shadow className="border border-black w-[800px]">
-        <CardHeader>
-          <h2 className="text-2xl font-bold">User Profile</h2>
+      <Card shadow className="border w-[800px] m-3">
+        <CardHeader className="bg-blue-900 text-white">
+          <h2 className="text-2xl font-bold ">User Profile</h2>
         </CardHeader>
         <Divider />
         <CardBody>
@@ -99,7 +99,7 @@ export default function UserProfile() {
                 value={data.first_name}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
+                variant=""
               />
               <Input
                 label="Last Name"
@@ -107,7 +107,7 @@ export default function UserProfile() {
                 value={data.last_name}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
+                variant=""
               />
               <Input
                 label="Username"
@@ -115,7 +115,7 @@ export default function UserProfile() {
                 value={data.username}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
+                variant=""
               />
             </div>
             <div>
@@ -126,7 +126,7 @@ export default function UserProfile() {
                 value={data.email}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
+                variant=""
               />
               <Input
                 label="Role"
@@ -134,7 +134,7 @@ export default function UserProfile() {
                 value={data.role}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
+                variant=""
               />
               <Input
                 label="Current Password"
@@ -153,6 +153,7 @@ export default function UserProfile() {
               variant="contained"
               color="success"
               onClick={handleUpdate}
+              className="btn-primary mt-4 bg-blue-900 text-white"
             >
               Update Profile
             </Button>

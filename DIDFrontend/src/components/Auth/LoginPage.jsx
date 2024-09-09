@@ -10,7 +10,7 @@ import {
   Chip,
 } from "@nextui-org/react";
 import axios from "axios";
-import Logo from "../../assets/Logo";
+// import Logo from "../../assets/Logo";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -23,14 +23,14 @@ const api = axios.create({
 });
 
 const LoginPage = () => {
-  const { setToken , setUser } = useAuth();  // Get setToken and setUser from Auth context
+  const { setToken , setUser } = useAuth();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const csrfToken = Cookies.get("csrftoken"); // Get CSRF token from cookie
+    const csrfToken = Cookies.get("csrftoken");
 
     try {
       const response = await api.post(
@@ -38,12 +38,11 @@ const LoginPage = () => {
         { email, password },
         {
           withCredentials: true,
-          headers: { "X-CSRFToken": csrfToken }, // Include CSRF token in the request headers
+          headers: { "X-CSRFToken": csrfToken },
         }
       );
 
       if (response.status === 200 && response.data.success) {
-        // Save token and user data in context
         setToken(response.data.token);
         setUser(JSON.stringify(response.data.user));
         dispatch(login( response.data.user ));
@@ -51,7 +50,7 @@ const LoginPage = () => {
         toast.success("Login successful");
         setTimeout(() => {
           navigate("/profile");
-        }, 100); // 100ms delay  // Redirect to homepage or profile
+        }, 100);
       } else {
         toast.error("Login failed");
       }
@@ -67,9 +66,9 @@ const LoginPage = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <Card className="w-96 border border-black">
-        <CardHeader className="flex items-center justify-center gap-3">
-          <Logo />
+      <Card className="w-50 border m-3">
+        <CardHeader className="flex items-center justify-center gap-3 bg-blue-900">
+          <div className="font-semibold text-white text-xl">District Integrated Dashboard</div>
         </CardHeader>
         <Divider />
         <CardBody>
@@ -78,9 +77,9 @@ const LoginPage = () => {
               size="lg"
               type="email"
               label="Email"
-              className="my-2"
+              className="my-2 "
               value={email}
-              variant="bordered"
+              variant=""
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
@@ -89,14 +88,14 @@ const LoginPage = () => {
               label="Password"
               className="my-2"
               value={password}
-              variant="bordered"
+              variant=""
               onChange={(e) => setPassword(e.target.value)}
             />
             <Button
               type="button"
               onClick={handleLogin}
               aria-label="Login"
-              className="btn-primary w-full mt-4"
+              className="btn-primary w-full mt-4 bg-blue-900 text-white"
             >
               Login
             </Button>
@@ -107,7 +106,7 @@ const LoginPage = () => {
           <div className="text-justify">
             <span>Don&apos;t have an account?</span>{" "}
             <span>
-              <Chip>
+              <Chip className="bg-blue-900 text-white">
                 <NavLink to="/Register" className="">
                   Register
                 </NavLink>

@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../assets/Logo";
+// import Logo from "../../assets/Logo";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie"; // Import js-cookie
 
@@ -111,9 +111,9 @@ const RegisterPage = () => {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Toaster/>
-      <Card className="w-96 p-4 border border-black">
-        <CardHeader className="text-center">
-          <Logo />
+      <Card className="w-96 p-4 m-3 ">
+        <CardHeader className="text-center bg-blue-900">
+          <div className="font-semibold text-white text-xl">District Integrated Dashboard</div>
         </CardHeader>
         <Divider />
         <CardBody>
@@ -128,7 +128,7 @@ const RegisterPage = () => {
                   value={formData[field]}
                   onChange={(e) => handleInputChange(e, field)}
                   error={errors[field]}
-                  variant="bordered"
+                  variant=""
                 />
                 {errors[field] && (
                   <div className="text-red-500">{errors[field]}</div>
@@ -138,7 +138,7 @@ const RegisterPage = () => {
             <Button
               type="button"
               onClick={handleRegister}
-              className="btn-primary w-full mt-4"
+              className="btn-primary w-full mt-4 bg-blue-900 text-white"
               aria-label="Register"
             >
               Register
@@ -150,7 +150,7 @@ const RegisterPage = () => {
           <div className="text-center">
             <span>Already have an account?</span>{" "}
             <span>
-              <Chip>
+              <Chip className="bg-blue-900 text-white">
                 <NavLink to="/login" className="">
                   Login
                 </NavLink>
