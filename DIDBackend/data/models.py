@@ -1,14 +1,11 @@
 from django.db import models
 
-
 class TalukaPopulation(models.Model):
     taluka_name = models.CharField(max_length=100, unique=True)
     total_population = models.IntegerField()
 
     def __str__(self):
         return self.taluka_name
-
-# models.py
 
 class CitiesData(models.Model):
     taluka_name = models.CharField(max_length=100, verbose_name="Taluka Name")

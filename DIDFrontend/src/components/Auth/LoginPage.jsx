@@ -49,7 +49,9 @@ const LoginPage = () => {
         dispatch(login( response.data.user ));
 
         toast.success("Login successful");
-        navigate("/profile");  // Redirect to homepage or profile
+        setTimeout(() => {
+          navigate("/profile");
+        }, 100); // 100ms delay  // Redirect to homepage or profile
       } else {
         toast.error("Login failed");
       }

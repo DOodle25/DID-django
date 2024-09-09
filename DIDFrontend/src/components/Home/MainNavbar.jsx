@@ -43,11 +43,11 @@ export default function App() {
             Population
           </NavLink>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <NavLink to="/upload">
             Upload CSV
           </NavLink>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <NavLink to="/demography">
             Demography
@@ -71,7 +71,7 @@ export default function App() {
       <NavbarMenu>
           <NavbarMenuItem className="flex flex-col">
             <NavLink to="/population">Population</NavLink>
-            <NavLink to="/upload">Upload CSV</NavLink>
+            {/* <NavLink to="/upload">Upload CSV</NavLink> */}
             <NavLink to="/demography">Demography</NavLink>
             <NavLink to="/profile">Profile</NavLink>
           </NavbarMenuItem>

@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-7%2l!3bg17fe3&l+$((7lm^_l1jp-vn=h(g@h6vf4$h3_)f9+=
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -55,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # middleware to validate JWT tokens for protected routes
     'authentication.middleware.JWTAuthenticationMiddleware',
 ]
 
@@ -78,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DIDBackend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -88,7 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -108,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -122,7 +118,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -133,16 +128,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-
-# CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
-
-# For a more restrictive setup, use CORS_ALLOWED_ORIGINS instead
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
-# ]
 
 # Optional: Additional CORS settings
 CORS_ALLOW_CREDENTIALS = True
@@ -154,26 +140,24 @@ CORS_ALLOWED_METHODS = [
     "DELETE",
     "OPTIONS",
 ]
-
-# Optional: Specify allowed headers if needed
 CORS_ALLOW_HEADERS = [
     "content-type",
     "authorization",
     "x-csrftoken",
     "access-control-allow-origin",
 ]
-
-AUTH_USER_MODEL = 'users.User'
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Replace with your front-end domain
+    "http://localhost:5173",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173',  # Add your front-end domain if needed
+    'http://localhost:5173',
 ]
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+# Custom user model
+AUTH_USER_MODEL = 'users.User'

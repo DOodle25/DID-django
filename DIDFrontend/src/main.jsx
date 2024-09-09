@@ -34,14 +34,25 @@ import ProtectedRoute from "./components/Auth/ProtectedRoute"; // Import the Pro
 
 const routes = createRoutesFromElements(
   <>
+    {/* Public Routes */}
+    <Route path="/register" element={<RegisterPage />} />
+    <Route path="/login" element={<LoginPage />} />
+
+    {/* Protected Routes */}
     <Route
       path="/"
-      element={<App />}
+      element={
+        <ProtectedRoute>
+          <App />
+        </ProtectedRoute>
+      }
     >
-      <Route path="" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/population" element={<Population />} />
       <Route path="/demography" element={<Demography />} />
       <Route path="/addscheme" element={<AddSchemes />} />
+      <Route path="/upload" element={<UploadCSV />} />
+      <Route path="/profile" element={<UserProfile />} />
       <Route path="/visnagar" element={<VisnagarMap />} />
       <Route path="/kheralu" element={<KheraluMap />} />
       <Route path="/satlasana" element={<SatlasanaMap />} />
@@ -52,29 +63,7 @@ const routes = createRoutesFromElements(
       <Route path="/unjha" element={<UnjhaMap />} />
       <Route path="/vadnagar" element={<VadnagarMap />} />
       <Route path="/vijapur" element={<VijapurMap />} />
-
-      {/* Protected Routes */}
-      <Route
-        path="/upload"
-        element={
-          <ProtectedRoute>
-            <UploadCSV />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <UserProfile />
-          </ProtectedRoute>
-        }
-      />
     </Route>
-
-    {/* Public Routes */}
-    <Route path="/register" element={<RegisterPage />} />
-    <Route path="/login" element={<LoginPage />} />
   </>
 );
 

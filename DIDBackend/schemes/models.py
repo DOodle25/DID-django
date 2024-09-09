@@ -1,4 +1,3 @@
-# models.py
 from django.db import models
 
 class Scheme(models.Model):
@@ -14,7 +13,7 @@ class Scheme(models.Model):
     lasteditedby = models.CharField(max_length=255)
     timeOfschemeAdded = models.TimeField()
     date = models.DateField()
-    srno = models.AutoField(primary_key=True)  # Auto-incrementing field
+    srno = models.AutoField(primary_key=True)
 
     def __str__(self):
         return self.schemename

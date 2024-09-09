@@ -1,6 +1,5 @@
-# serializers.py
-from rest_framework import serializers
 from .models import Scheme
+from rest_framework import serializers
 
 class SchemeSerializer(serializers.ModelSerializer):
     class Meta:

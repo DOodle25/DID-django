@@ -19,7 +19,7 @@ def populate_taluka_population(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('data', '0005_talukapopulation'),  # Replace this with the correct initial migration number for 'data' app
+        ('data', '0005_talukapopulation'),
     ]
 
     operations = [
