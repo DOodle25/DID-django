@@ -9,7 +9,8 @@ class JWTAuthenticationMiddleware:
 
     def __call__(self, request):
         # Skip validation for the login and registration endpoints
-        if request.path in ['/login', '/register', 'profile/update']:
+        exempt_routes = ['/login', '/register', '/profile/update']
+        if request.path.startswith('/admin/') or request.path in exempt_routes:
             return self.get_response(request)
 
         # Get the Authorization header

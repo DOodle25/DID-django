@@ -11,7 +11,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('addscheme/', add_scheme_details, name='add_scheme'),
+    path('addScheme/', add_scheme_details, name='add_scheme'),
     path('getschemes/', get_all_schemes, name='get_all_schemes'),
     path('getschemesbyname/<str:name>/', get_scheme_by_name, name='get_scheme_by_name'),
     path('getschemesbyid/<int:id>/', get_scheme_by_id, name='get_scheme_by_id'),

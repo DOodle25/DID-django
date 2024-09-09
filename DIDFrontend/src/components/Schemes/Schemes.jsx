@@ -110,11 +110,15 @@ export default function App() {
     deleteMode: false,
   });
   const [editedScheme, setEditedScheme] = useState({});
+  const token = localStorage.getItem("token");
+  const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
   const fetchSchemes = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/getschemes/`, {
-        withCredentials: true,
-      });
+      const res = await axios.get(`${API_BASE_URL}/getschemes/`,{ headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
 
       console.log(res.data);
       if (res.status !== 200) {
@@ -151,13 +155,15 @@ export default function App() {
 
   const handleSaveEdit = async () => {
     try {
+      editedScheme.lasteditedby = lasteditedby;
       const res = await axios.put(
-        `${API_BASE_URL}/updatescheme/${editedScheme._id}/`,
+        `${API_BASE_URL}/updatescheme/${parseInt(editedScheme.srno)}/`,
         editedScheme,
-        {
-          withCredentials: true,
-        }
-      );
+        { headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
 
       console.log(res.data);
 
@@ -168,7 +174,7 @@ export default function App() {
 
       setSchemes((prevSchemes) =>
         prevSchemes.map((scheme) =>
-          scheme._id === editedScheme._id ? editedScheme : scheme
+          scheme.srno === editedScheme.srno ? editedScheme : scheme
         )
       );
 
@@ -199,31 +205,32 @@ export default function App() {
   };
 
   const handleConfirmDelete = async () => {
-    console.log("Confirm Delete Scheme:", editedScheme._id);
+    console.log("Confirm Delete Scheme:", editedScheme.srno);
 
-    if (!editedScheme._id) {
+    if (!editedScheme.srno) {
       console.error("Invalid scheme ID for deletion");
       return;
     }
 
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/deletescheme/${editedScheme._id}`,
-        editedScheme,
-        {
-          withCredentials: true,
-        }
-      );
+        `${API_BASE_URL}/deletescheme/${editedScheme.srno}/`,
+        editedScheme,{ headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
 
       if (response.status === 200) {
         setSchemes((prevSchemes) =>
-          prevSchemes.filter((scheme) => scheme._id !== editedScheme._id)
+          prevSchemes.filter((scheme) => scheme.sfno !== editedScheme.srno)
         );
         setModalData({
           ...modalData,
           isOpen: false,
         });
         const successToast = toast.success("Scheme deleted successfully!");
+        window.location.reload();
         await successToast.promise;
       } else {
         toast.error("Failed to delete scheme.");

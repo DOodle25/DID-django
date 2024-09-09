@@ -18,6 +18,8 @@ const AddSchemes = () => {
 
   const handleAddScheme = async () => {
     try {
+      const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         // "https://myapp.vercel.app/addScheme"
         "http://localhost:5000/addScheme/"
@@ -31,9 +33,13 @@ const AddSchemes = () => {
           moneyspent,
           status,
           leadperson,
+          lasteditedby,
         },
-        { withCredentials: true }
-      );
+        { headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
 
       if (response.status === 201) {
         toast.success("Scheme added successfully!");

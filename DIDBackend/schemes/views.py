@@ -5,15 +5,35 @@ from rest_framework.decorators import api_view
 from .models import Scheme
 from .serializers import SchemeSerializer
 from django.utils import timezone
+from rest_framework import status
 
 @api_view(['GET'])
 def get_all_schemes(request):
-    schemes = Scheme.objects.all()
-    serializer = SchemeSerializer(schemes, many=True)
-    return Response({
-        'schemes': serializer.data,
-        'message': 'Scheme Fetched Successfully',
-    })
+    try:
+        schemes = Scheme.objects.all()
+        serializer = SchemeSerializer(schemes, many=True)
+
+        # Check if any schemes were fetched
+        if not schemes.exists():
+            return Response({
+                'message': 'No schemes available.',
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({
+            'schemes': serializer.data,
+            'message': 'Schemes fetched successfully',
+        }, status=status.HTTP_200_OK)
+
+    except Scheme.DoesNotExist:
+        return Response({
+            'message': 'Scheme model does not exist.',
+        }, status=status.HTTP_404_NOT_FOUND)
+
+    except Exception as e:
+        # Capture any other exception and return the error
+        return Response({
+            'message': f'Request failed: {str(e)}',
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
 def get_scheme_by_name(request, name):
@@ -46,7 +66,7 @@ def add_scheme_details(request):
         scheme_data['progress'] = (float(scheme_data['moneyspent']) / float(scheme_data['moneygranted'])) * 100
         scheme_data['timeOfschemeAdded'] = timezone.now().strftime('%H:%M:%S')
         scheme_data['date'] = timezone.now().date()
-
+    
     serializer = SchemeSerializer(data=scheme_details_array, many=True)
     if serializer.is_valid():
         serializer.save()
@@ -56,10 +76,10 @@ def add_scheme_details(request):
         })
     return Response({'message': 'Invalid data', 'errors': serializer.errors}, status=400)
 
-@api_view(['DELETE'])
+@api_view(['DELETE','POST'])
 def delete_scheme_details(request, id):
     try:
-        scheme = Scheme.objects.get(id=id)
+        scheme = Scheme.objects.get(srno=id)
         scheme.delete()
         return Response({
             'message': f'Scheme with id {id} deleted successfully',
@@ -67,7 +87,7 @@ def delete_scheme_details(request, id):
     except Scheme.DoesNotExist:
         return Response({'message': 'Scheme not found'}, status=404)
 
-@api_view(['DELETE'])
+@api_view(['DELETE','POST'])
 def delete_scheme_details_by_name(request):
     scheme_names = request.data.get('schemeNames')
     if not isinstance(scheme_names, list):
@@ -81,7 +101,7 @@ def delete_scheme_details_by_name(request):
         'count': count,
     })
 
-@api_view(['DELETE'])
+@api_view(['DELETE','POST'])
 def bulk_delete(request):
     identifiers = request.data.get('identifiers')
     if not isinstance(identifiers, list) or not identifiers:
@@ -92,28 +112,30 @@ def bulk_delete(request):
     return Response({'message': 'Bulk delete successful', 'count': count})
 
 @api_view(['PUT'])
-def update_scheme_details(request):
-    updated_scheme_data_array = request.data
-    if not isinstance(updated_scheme_data_array, list):
-        updated_scheme_data_array = [updated_scheme_data_array]
+def update_scheme_details(request, id):
+    try:
+        scheme = Scheme.objects.get(srno=id)
+        updated_data = request.data
 
-    for scheme_data in updated_scheme_data_array:
-        scheme_id = scheme_data.get('id')
-        try:
-            scheme = Scheme.objects.get(id=scheme_id)
-            scheme_data['lasteditedby'] = request.user.username
-            moneyspent = float(scheme_data.get('moneyspent'))
-            moneygranted = float(scheme_data.get('moneygranted'))
-            if moneygranted == 0:
-                scheme_data['progress'] = 0
-            else:
-                scheme_data['progress'] = (moneyspent / moneygranted) * 100
-            for attr, value in scheme_data.items():
-                setattr(scheme, attr, value)
-            scheme.save()
-        except Scheme.DoesNotExist:
-            return Response({'message': f'Scheme with id {scheme_id} not found'}, status=404)
+        # Update the fields
+        for attr, value in updated_data.items():
+            setattr(scheme, attr, value)
+            
+        # Calculate progress if needed
+        moneyspent = float(updated_data.get('moneyspent', scheme.moneyspent))
+        moneygranted = float(updated_data.get('moneygranted', scheme.moneygranted))
+        if moneygranted == 0:
+            scheme.progress = 0
+        else:
+            scheme.progress = (moneyspent / moneygranted) * 100
+        
+        # Save the updated scheme
+        scheme.save()
 
-    return Response({
-        'message': 'Scheme updated successfully',
-    })
+        return Response({
+            'message': 'Scheme updated successfully',
+            'scheme': SchemeSerializer(scheme).data,
+        }, status=status.HTTP_200_OK)
+    
+    except Scheme.DoesNotExist:
+        return Response({'message': 'Scheme not found'}, status=status.HTTP_404_NOT_FOUND)

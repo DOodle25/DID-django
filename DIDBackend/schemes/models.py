@@ -14,7 +14,7 @@ class Scheme(models.Model):
     lasteditedby = models.CharField(max_length=255)
     timeOfschemeAdded = models.TimeField()
     date = models.DateField()
-    srno = models.IntegerField()
+    srno = models.AutoField(primary_key=True)  # Auto-incrementing field
 
     def __str__(self):
         return self.schemename
