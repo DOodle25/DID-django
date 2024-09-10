@@ -19,7 +19,11 @@ export default function UserProfile() {
     username: "",
     email: "",
     role: "",
+    password: "",
+    new_password: "",
+    re_newpassword: "",
   });
+  
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -138,6 +142,14 @@ export default function UserProfile() {
                 onChange={handleChange}
                 className="mb-4"
               />
+              <Input
+                label="New Password"
+                type="password"
+                name="new_password"
+                value={data.new_password}
+                onChange={handleChange}
+                className="mb-4"
+              />
             </div>
             <div>
               <Input
@@ -163,6 +175,15 @@ export default function UserProfile() {
                 onChange={handleChange}
                 className="mb-4"
               />
+              <Input
+                label="Re-enter New Password"
+                type="password"
+                name="re_newpassword"
+                value={data.re_newpassword}
+                onChange={handleChange}
+                className="mb-4"
+              />
+
             </div>
           </div>
           <Spacer y={2} />

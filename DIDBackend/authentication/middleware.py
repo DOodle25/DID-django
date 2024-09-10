@@ -13,34 +13,34 @@ class JWTAuthenticationMiddleware:
         exempt_routes = ['/login', '/register', '/profile/update']
         # skip admin routes
         if request.path.startswith('/admin/') or request.path in exempt_routes:
-            print("if1")
+            # print("if1")
             return self.get_response(request)
         token = request.headers.get('Authorization')
         if not token:
-            print("if2")
+            # print("if2")
             return JsonResponse({'error': 'Authorization header is missing'}, status=401)
         try:
-            print("try1")
+            # print("try1")
             token = token.split()[1]
         except IndexError:
-            print("excetption1")
+            # print("excetption1")
             return JsonResponse({'error': 'Invalid token format'}, status=401)
         try:
-            print("try2")
+            # print("try2")
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
             user_id = payload.get('id')
             try:
-                print("try3")
+                # print("try3")
                 user = User.objects.get(id=user_id)
                 request.user = user
             except User.DoesNotExist:
-                print("excetption2")
+                # print("excetption2")
                 return JsonResponse({'error': 'User not found'}, status=404)
         except jwt.ExpiredSignatureError:
-            print("excetption3")
+            # print("excetption3")
             return JsonResponse({'error': 'Token has expired'}, status=401)
         except jwt.InvalidTokenError:
-            print("excetption4")
+            # print("excetption4")
             return JsonResponse({'error': 'Invalid token'}, status=401)
         print("return")
         response = self.get_response(request)

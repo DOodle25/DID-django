@@ -28,6 +28,9 @@ class UserProfileUpdateView(views.APIView):
         role = user_info.get('role', None)
         first_name = user_info.get('first_name', None)
         last_name = user_info.get('last_name', None)
+        new_password = user_info.get('new_password', None)
+        re_newpassword = user_info.get('re_newpassword', None)
+        print(email , password)
         # Print extracted data
         # print(f'Authorization Header: {authorization_header}')
         # print(f'Username: {username}')
@@ -42,6 +45,7 @@ class UserProfileUpdateView(views.APIView):
             try:
                 user = authenticate(email=email, password=password)
                 if not user:
+                    print(email, password)
                     return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
                 print(f'Authenticated User: {user}')
                 if first_name:
@@ -53,6 +57,9 @@ class UserProfileUpdateView(views.APIView):
                     print(f"Updating last name to: {last_name}")
                     user.save()
                 serializer = UserSerializer(user)
+                if new_password and new_password == re_newpassword:
+                    user.set_password(new_password)
+                    user.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
                 return Response({'message': 'Invalid or expired token'}, status=status.HTTP_401_UNAUTHORIZED)
