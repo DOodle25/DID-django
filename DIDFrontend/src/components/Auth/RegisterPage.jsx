@@ -8,11 +8,12 @@ import {
   Input,
   Button,
   Chip,
+  Select,
+  SelectItem
 } from "@nextui-org/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
-// import Logo from "../../assets/Logo";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie"; // Import js-cookie
 
@@ -27,6 +28,14 @@ const RegisterPage = () => {
     last_name: "",
   });
   const [errors, setErrors] = useState({});
+
+  // Role options for the select field
+  const roleOptions = [
+    { name: "Admin", uid: "admin" },
+    { name: "User", uid: "user" },
+    { name: "Manager", uid: "manager" },
+    { name: "Supervisor", uid: "supervisor" },
+  ];
 
   const handleInputChange = (e, field) => {
     const value = e.target.value;
@@ -98,10 +107,10 @@ const RegisterPage = () => {
           return errors;
         }
       case "role":
-        return value.trim() ? [] : ["Please enter your role."];
-      case "firstName":
+        return value.trim() ? [] : ["Please select a role."];
+      case "first_name":
         return value.trim() ? [] : ["Please enter your first name."];
-      case "lastName":
+      case "last_name":
         return value.trim() ? [] : ["Please enter your last name."];
       default:
         return [];
@@ -110,8 +119,8 @@ const RegisterPage = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <Toaster/>
-      <Card className="w-96 p-4 m-3 ">
+      <Toaster />
+      <Card className="w-96 p-4 m-3">
         <CardHeader className="text-center bg-blue-900">
           <div className="font-semibold text-white text-xl">District Integrated Dashboard</div>
         </CardHeader>
@@ -120,16 +129,31 @@ const RegisterPage = () => {
           <form onSubmit={(e) => e.preventDefault()}>
             {Object.keys(formData).map((field) => (
               <div key={field} className="my-3">
-                <Input
-                  size="lg"
-                  type={field === "email" ? "email" : "text"}
-                  label={field.charAt(0).toUpperCase() + field.slice(1)}
-                  className="my-2"
-                  value={formData[field]}
-                  onChange={(e) => handleInputChange(e, field)}
-                  error={errors[field]}
-                  variant=""
-                />
+                {field === "role" ? (
+                  <Select
+                    size="lg"
+                    label="Role"
+                    onChange={(e) => handleInputChange(e, "role")}
+                    value={formData.role}
+                  >
+                    {roleOptions.map((option) => (
+                      <SelectItem key={option.uid} value={option.uid}>
+                        {option.name}
+                      </SelectItem>
+                    ))}
+                  </Select>
+                ) : (
+                  <Input
+                    size="lg"
+                    type={field === "email" ? "email" : "text"}
+                    label={field.charAt(0).toUpperCase() + field.slice(1)}
+                    className="my-2"
+                    value={formData[field]}
+                    onChange={(e) => handleInputChange(e, field)}
+                    error={errors[field]}
+                    variant=""
+                  />
+                )}
                 {errors[field] && (
                   <div className="text-red-500">{errors[field]}</div>
                 )}

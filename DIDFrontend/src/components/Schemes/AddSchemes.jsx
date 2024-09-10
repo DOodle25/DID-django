@@ -48,7 +48,7 @@ const AddSchemes = () => {
         withCredentials: true,
       });
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         toast.success("Scheme added successfully!");
         navigate("/");
       } else if (response.status === 401) {

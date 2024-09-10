@@ -44,7 +44,7 @@ export default function UserProfile() {
           throw error;
         }
 
-        setData(res.data); // Assume res.data contains the user object directly
+        setData(res.data);
         setData((prevData) => ({ ...prevData, password: "" })); // Clear password
       } catch (err) {
         console.error(err);
@@ -83,6 +83,30 @@ export default function UserProfile() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        "http://localhost:5000/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        localStorage.removeItem("token");
+        alert("Logout successful");
+        navigate("/login");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to log out");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <Card shadow className="border w-[800px] m-3">
@@ -99,7 +123,6 @@ export default function UserProfile() {
                 value={data.first_name}
                 onChange={handleChange}
                 className="mb-4"
-                variant=""
               />
               <Input
                 label="Last Name"
@@ -107,7 +130,6 @@ export default function UserProfile() {
                 value={data.last_name}
                 onChange={handleChange}
                 className="mb-4"
-                variant=""
               />
               <Input
                 label="Username"
@@ -115,7 +137,6 @@ export default function UserProfile() {
                 value={data.username}
                 onChange={handleChange}
                 className="mb-4"
-                variant=""
               />
             </div>
             <div>
@@ -126,7 +147,6 @@ export default function UserProfile() {
                 value={data.email}
                 onChange={handleChange}
                 className="mb-4"
-                variant=""
               />
               <Input
                 label="Role"
@@ -134,7 +154,6 @@ export default function UserProfile() {
                 value={data.role}
                 onChange={handleChange}
                 className="mb-4"
-                variant=""
               />
               <Input
                 label="Current Password"
@@ -143,7 +162,6 @@ export default function UserProfile() {
                 value={data.password}
                 onChange={handleChange}
                 className="mb-4"
-                variant="bordered"
               />
             </div>
           </div>
@@ -156,6 +174,14 @@ export default function UserProfile() {
               className="btn-primary mt-4 bg-blue-900 text-white"
             >
               Update Profile
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={handleLogout}
+              className="btn-primary mt-4 bg-red-600 text-white ml-4"
+            >
+              Logout
             </Button>
           </div>
         </CardBody>

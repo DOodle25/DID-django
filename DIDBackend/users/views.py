@@ -118,4 +118,24 @@ class LoginUserView(views.APIView):
             "user": {"_id": user.pk, "username": user.username, "email": user.email, "role": user.role, "first_name": user.first_name, "last_name": user.last_name},
         })
 
+class LogoutUserView(views.APIView):
 
+    def post(self, request):
+        auth_header = get_authorization_header(request).split()
+        print(f'Auth Header: {auth_header}')
+        if auth_header and len(auth_header) == 2:
+            token = auth_header[1].decode('utf-8')
+            try:
+                payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+                user_id = payload['id']
+
+                # Remove the session
+                ActiveSession.objects.filter(user_id=user_id, token=token).delete()
+
+                return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
+            except jwt.ExpiredSignatureError:
+                return Response({"error": "Token has expired"}, status=status.HTTP_401_UNAUTHORIZED)
+            except jwt.InvalidTokenError:
+                return Response({"error": "Invalid token"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        return Response({"error": "Authorization header missing or malformed"}, status=status.HTTP_401_UNAUTHORIZED)

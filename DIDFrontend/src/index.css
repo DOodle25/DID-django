@@ -39,3 +39,20 @@ text{
     display: none;
   }
 } */
+
+
+.bg-default-100{
+  background-color: #eaebff;
+}
+
+.bg-default-100:hover {
+  background-color: #dedfff !important;
+}
+
+.bg-default-100[data-focus='true'] {
+  background-color: #d6d9fe !important;
+}
+
+.bg-content1 {
+ /* background-color: black; */
+}
