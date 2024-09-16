@@ -31,7 +31,7 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { AuthProvider } from './auth-context/auth-context';
 import ProtectedRoute from "./components/Auth/ProtectedRoute"; // Import the ProtectedRoute
-
+import SchemeDetails from "./components/Schemes/SchemeID.jsx";
 const routes = createRoutesFromElements(
   <>
     {/* Public Routes */}
@@ -47,6 +47,7 @@ const routes = createRoutesFromElements(
         </ProtectedRoute>
       }
     >
+      <Route path="/scheme/:id" element={<SchemeDetails />} />
       <Route path="/" element={<Home />} />
       <Route path="/population" element={<Population />} />
       <Route path="/demography" element={<Demography />} />

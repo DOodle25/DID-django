@@ -37,7 +37,7 @@ export default function App() {
     // "https://myapp.vercel.app"
     "http://localhost:5000";
   const columns = [
-    // { name: "SR.NO", uid: "srno", sortable: true },
+    { name: "SR.NO", uid: "srno", sortable: true },
     { name: "SCHEME NAME", uid: "schemename", sortable: true },
     { name: "LAST EDITED BY", uid: "lasteditedby", sortable: true },
     { name: "LEAD PERSON", uid: "leadperson", sortable: true },
@@ -111,11 +111,12 @@ export default function App() {
   const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
   const fetchSchemes = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/getschemes/`,{ headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      withCredentials: true,
-    });
+      const res = await axios.get(`${API_BASE_URL}/getschemes/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
 
       console.log(res.data);
       if (res.status !== 200) {
@@ -156,11 +157,13 @@ export default function App() {
       const res = await axios.put(
         `${API_BASE_URL}/updatescheme/${parseInt(editedScheme.srno)}/`,
         editedScheme,
-        { headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
 
       console.log(res.data);
 
@@ -212,11 +215,14 @@ export default function App() {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/deletescheme/${editedScheme.srno}/`,
-        editedScheme,{ headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
+        editedScheme,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
 
       if (response.status === 200) {
         setSchemes((prevSchemes) =>
@@ -540,7 +546,11 @@ export default function App() {
               </DropdownMenu>
             </Dropdown>
             <NavLink to="/addscheme">
-              <Button className="bg-blue-900" color="primary" endContent={<PlusIcon />}>
+              <Button
+                className="bg-blue-900"
+                color="primary"
+                endContent={<PlusIcon />}
+              >
                 Add New
               </Button>
             </NavLink>
@@ -684,7 +694,7 @@ const SchemeModal = ({
   onInputChange,
 }) => {
   const { isOpen, schemeDetails, editMode, deleteMode } = modalData;
-
+  const navigate = useNavigate();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
@@ -700,6 +710,13 @@ const SchemeModal = ({
               <p>Place: {schemeDetails.place}</p>
               <p>Time of Scheme Added: {schemeDetails.timeOfschemeAdded}</p>
               <p>Date: {schemeDetails.date}</p>
+              <Button
+                auto
+                color="primary"
+                onClick={() => navigate(`/scheme/${schemeDetails.srno}`)}
+              >
+                View More
+              </Button>
             </>
           )}
           {editMode && (

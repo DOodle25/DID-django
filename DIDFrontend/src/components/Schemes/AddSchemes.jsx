@@ -1,6 +1,5 @@
-// AddSchemes.jsx
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardBody, Divider, Input } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Divider, Input, Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -16,21 +15,33 @@ const AddSchemes = () => {
   const [leadperson, setLeadPerson] = useState("");
   const navigate = useNavigate();
 
+  const ministryOptions = [
+    { name: "Ministry of Education", uid: "education" },
+    { name: "Ministry of Health", uid: "health" },
+    { name: "Ministry of Finance", uid: "finance" },
+    // Add more options as needed
+  ];
+
+  const placeOptions = [
+    { name: "Urban", uid: "urban" },
+    { name: "Rural", uid: "rural" },
+    // Add more options as needed
+  ];
+
   const statusOptions = [
-  { name: "Approved", uid: "Approved" },
-  { name: "Pending Approval", uid: "Pending Approval" },
-  { name: "In Progress", uid: "In Progress" },
-  { name: "Completed", uid: "Completed" },
-  { name: "Pending", uid: "Pending" }
-];
+    { name: "Approved", uid: "Approved" },
+    { name: "Pending Approval", uid: "Pending Approval" },
+    { name: "In Progress", uid: "In Progress" },
+    { name: "Completed", uid: "Completed" },
+    { name: "Pending", uid: "Pending" },
+  ];
+
   const handleAddScheme = async () => {
     try {
       const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        // "https://myapp.vercel.app/addScheme"
-        "http://localhost:5000/addScheme/"
-        ,
+        "http://localhost:5000/addScheme/",
         {
           schemename,
           ministry,
@@ -42,11 +53,8 @@ const AddSchemes = () => {
           leadperson,
           lasteditedby,
         },
-        { headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
+        { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      );
 
       if (response.status === 200) {
         toast.success("Scheme added successfully!");
@@ -65,7 +73,7 @@ const AddSchemes = () => {
       <div>
         <Toaster />
       </div>
-      <Card className="w-96 border border-black ">
+      <Card className="w-96 border border-black">
         <CardHeader className="flex gap-3 bg-blue-900">
           <div className="text-xl font-bold text-white">Add Scheme</div>
         </CardHeader>
@@ -80,14 +88,32 @@ const AddSchemes = () => {
               value={schemename}
               onChange={(e) => setSchemeName(e.target.value)}
             />
-            <Input
+            <Select
               size="lg"
-              type="text"
               label="Ministry"
               className="my-2"
               value={ministry}
               onChange={(e) => setMinistry(e.target.value)}
-            />
+            >
+              {ministryOptions.map((option) => (
+                <SelectItem key={option.uid} value={option.uid}>
+                  {option.name}
+                </SelectItem>
+              ))}
+            </Select>
+            <Select
+              size="lg"
+              label="Place"
+              className="my-2"
+              value={place}
+              onChange={(e) => setPlace(e.target.value)}
+            >
+              {placeOptions.map((option) => (
+                <SelectItem key={option.uid} value={option.uid}>
+                  {option.name}
+                </SelectItem>
+              ))}
+            </Select>
             <Input
               size="lg"
               type="text"
@@ -95,14 +121,6 @@ const AddSchemes = () => {
               className="my-2"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
-            />
-            <Input
-              size="lg"
-              type="text"
-              label="Place"
-              className="my-2"
-              value={place}
-              onChange={(e) => setPlace(e.target.value)}
             />
             <Input
               size="lg"
@@ -120,14 +138,19 @@ const AddSchemes = () => {
               value={moneyspent}
               onChange={(e) => setMoneySpent(e.target.value)}
             />
-            <Input
+            <Select
               size="lg"
-              type="text"
               label="Status"
               className="my-2"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-            />
+            >
+              {statusOptions.map((option) => (
+                <SelectItem key={option.uid} value={option.uid}>
+                  {option.name}
+                </SelectItem>
+              ))}
+            </Select>
             <Input
               size="lg"
               type="text"
@@ -140,7 +163,7 @@ const AddSchemes = () => {
               type="button"
               className="btn-primary bg-blue-900 rounded-xl mb-2 px-4 text-white hover:bg-blue-800 w-full mt-4 py-2"
               onClick={handleAddScheme}
-              aria-label="Register"
+              aria-label="Add Scheme"
             >
               Add Scheme
             </button>
