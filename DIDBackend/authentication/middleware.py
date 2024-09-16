@@ -10,7 +10,7 @@ class JWTAuthenticationMiddleware:
 
     def __call__(self, request):
         # skip login and register routes
-        exempt_routes = ['/login', '/register', '/profile/update']
+        exempt_routes = ['/login', '/register', '/profile/update', '/verify-otp', '/send-otp', '/reset-password']
         # skip admin routes
         if request.path.startswith('/admin/') or request.path in exempt_routes:
             # print("if1")

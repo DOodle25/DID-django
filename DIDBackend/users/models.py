@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, AbstractUser
 import jwt
+from datetime import timedelta
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
@@ -61,3 +62,11 @@ class ActiveSession(models.Model):
     token = models.CharField(max_length=255)
     date = models.DateTimeField(auto_now_add=True)
 
+class OtpVerification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6)
+    verified = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_valid(self):
+        return not self.verified and self.created_at >= timezone.now() - timedelta(minutes=5)

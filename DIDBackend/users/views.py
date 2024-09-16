@@ -92,13 +92,63 @@ def _generate_jwt_token(user):
     )
     return token
 
+# class RegisterUserView(views.APIView):
+#     def post(self, request):
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'message': 'Registration successful!'}, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+import random
+from django.core.mail import send_mail
+from django.conf import settings
+from rest_framework import status, views
+from rest_framework.response import Response
+from .models import User, OtpVerification
+from .serializers import UserSerializer
+from django.utils import timezone
+
+
 class RegisterUserView(views.APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'Registration successful!'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            user = serializer.save()
+
+            # Generate OTP
+            otp_code = random.randint(100000, 999999)
+            OtpVerification.objects.create(user=user, otp=otp_code)
+
+            # Send OTP via email
+            send_mail(
+                'Your OTP Code',
+                f'Your OTP is {otp_code}',
+                settings.DEFAULT_FROM_EMAIL,
+                [user.email],
+                fail_silently=False,
+            )
+            return Response({'message': 'OTP sent to your email'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class VerifyOtpView(views.APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        otp = request.data.get('otp')
+
+        try:
+            user = User.objects.get(email=email)
+            otp_verification = OtpVerification.objects.get(user=user, otp=otp)
+
+            if otp_verification and otp_verification.is_valid():
+                otp_verification.verified = True
+                otp_verification.save()
+                return Response({'message': 'OTP verified, registration complete'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'message': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
+        except (User.DoesNotExist, OtpVerification.DoesNotExist):
+            return Response({'message': 'Invalid email or OTP'}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginUserView(views.APIView):
     def post(self, request):
@@ -146,3 +196,58 @@ class LogoutUserView(views.APIView):
                 return Response({"error": "Invalid token"}, status=status.HTTP_401_UNAUTHORIZED)
 
         return Response({"error": "Authorization header missing or malformed"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+
+
+from django.core.mail import send_mail
+from django.conf import settings
+from rest_framework import status, views
+from rest_framework.response import Response
+from django.utils import timezone
+from datetime import timedelta
+from .models import User, OtpVerification
+from .serializers import UserSerializer
+import random
+
+class SendOtpView(views.APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        try:
+            user = User.objects.get(email=email)
+            otp_code = random.randint(100000, 999999)
+            OtpVerification.objects.create(user=user, otp=otp_code)
+
+            send_mail(
+                'Your OTP Code',
+                f'Your OTP is {otp_code}',
+                settings.DEFAULT_FROM_EMAIL,
+                [user.email],
+                fail_silently=False,
+            )
+            return Response({'message': 'OTP sent to your email'}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({'message': 'Email not found'}, status=status.HTTP_404_NOT_FOUND)
+
+class ResetPasswordView(views.APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        otp = request.data.get('otp')
+        new_password = request.data.get('newPassword')
+
+        try:
+            user = User.objects.get(email=email)
+            otp_verification = OtpVerification.objects.get(user=user, otp=otp)
+
+            if otp_verification and otp_verification.is_valid():
+                otp_verification.verified = True
+                otp_verification.save()
+                user.set_password(new_password)
+                user.save()
+                return Response({'message': 'Password successfully reset'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'message': 'Invalid or expired OTP'}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response({'message': 'Email not found'}, status=status.HTTP_404_NOT_FOUND)
+        except OtpVerification.DoesNotExist:
+            return Response({'message': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
