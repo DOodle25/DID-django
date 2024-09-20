@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/5511534b-eb32-4f94-92ad-a1640ad76992)## About the Project
+## About the Project
 
 ### District Integration Dashboard
 
@@ -53,8 +53,7 @@ The **District Integration Dashboard** is a comprehensive web application that p
    - This section also allows filtering and searching schemes by city, date, or type.
    - The frontend employs **Context API** to manage global scheme state, making it easier to render data across multiple components without the need for redundant API calls.
 
-   ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/new-scheme.png)
-   ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/population.png)
+   ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/new%20scheme.png)
     ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/scheme1.png)
     ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/scheme2.png)
 #### 3. **Secure Authentication**
