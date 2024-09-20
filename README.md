@@ -2,7 +2,7 @@
 
 ### District Integration Dashboard
 
-The **District Integration Dashboard** is a comprehensive web application that provides an all-in-one platform for managing and visualizing district-level data in a seamless and intuitive interface. Built using the **MERN (MongoDB, Express, React, Node.js)** stack and powered by Python on the backend with **Django**, the dashboard is designed to serve administrative and government needs, offering a range of functionalities such as population management, scheme tracking, and city data aggregation. The integration of both **frontend and backend technologies** ensures a smooth, secure, and responsive user experience.
+The **District Integration Dashboard** is a comprehensive web application that provides an all-in-one platform for managing and visualizing district-level data in a seamless and intuitive interface. Built using the **React** and powered by Python on the backend with **Django**, the dashboard is designed to serve administrative and government needs, offering a range of functionalities such as population management, scheme tracking, and city data aggregation. The integration of both **frontend and backend technologies** ensures a smooth, secure, and responsive user experience.
 
 ### Key Features
 
@@ -77,40 +77,77 @@ The **District Integration Dashboard** is a comprehensive web application that p
 
 #### 6. **Data Security and Validation**
    - **Django** and **SQLite** ensure that all data transactions are secure and error-free. Extensive validation is done on both the backend and frontend before data is saved or updated, preventing unauthorized access or data corruption.
-
+![Responsive Design](image_placeholder.png)
 #### 7. **Session-Based Token Management**
    - **JWT-based session handling** makes it easy for users to log in and remain authenticated as they navigate across different parts of the dashboard.
    - The token is stored securely in **local storage**, ensuring that user sessions remain active until they explicitly log out. This also helps protect sensitive information such as city statistics and government scheme data.
-
+![Responsive Design](image_placeholder.png)
 #### 8. **Django Admin Panel**
    - A powerful **Django Admin Interface** is included, giving admin users the ability to directly manage all aspects of the application, including users, city data, and schemes.
    - This built-in admin dashboard allows for faster updates and administration without needing to access the database manually.
-
+![Responsive Design](image_placeholder.png)
 ### Installation
 
 To get started with the **District Integration Dashboard**, follow these steps:
 
-1. Clone the repository:
+### Frontend Setup and Execution
+
+1. **Navigate to the Frontend Directory:**
+   First, switch to the frontend directory, which is named `DIDFrontend`. Run the following command in your terminal:
+
+   ```bash
+   cd DIDFrontend
    ```
-   git clone https://github.com/username/district-dashboard.git
+
+2. **Install Dependencies:**
+   After navigating to the `DIDFrontend` directory, install all the necessary dependencies by running:
+
+   ```bash
+   npm install
    ```
-2. Install the necessary dependencies for both **Django** and **React**:
-   - Backend:
-     ```
-     pip install -r requirements.txt
-     ```
-   - Frontend:
-     ```
-     npm install
-     ```
-3. Run the backend server:
+
+3. **Run the Development Server with Vite:**
+   To start the frontend development server using **Vite**, use the following command:
+
+   ```bash
+   npm run dev
    ```
-   python manage.py runserver
+
+4. **Access the Frontend:**
+   Once the server starts, Vite will output a local development URL (e.g., `http://localhost:3000`). Open the browser and navigate to that URL to view the frontend.
+
+---
+
+### Backend Setup and Execution
+
+1. **Navigate to the Backend Directory:**
+   Ensure you are in the backend folder (root of the Django project).
+
+2. **Install Dependencies:**
+   Make sure all the necessary dependencies are installed for the backend by running:
+
+   ```bash
+   pip install -r requirements.txt
    ```
-4. Run the frontend development server:
+
+3. **Run the Django Development Server:**
+   Start the Django server on port `5000` by running:
+
+   ```bash
+   python manage.py runserver 5000
    ```
-   npm start
-   ```
+
+4. **Access the Backend:**
+   The Django backend will now be available at `http://localhost:5000`. You can use this to handle API requests and data operations from the frontend.
+
+---
+
+### Final Setup
+
+Ensure both the frontend (running via Vite) and the backend (Django) are running concurrently to have the full functionality of your **District Integration Dashboard**:
+
+- **Frontend**: `http://localhost:3000` (or the port Vite provides)
+- **Backend**: `http://localhost:5000`
 
 ### Future Enhancements
 
