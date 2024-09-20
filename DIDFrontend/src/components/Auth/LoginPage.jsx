@@ -586,7 +586,7 @@ const LoginPage = () => {
           <div className="text-justify">
             <span>Don&apos;t have an account?</span>{" "}
             <span>
-              <NavLink to="/Register" className="bg-blue-900 text-white">
+              <NavLink to="/Register" className="bg-blue-900 text-white rounded-lg px-2 pb-1">
                 Register
               </NavLink>
             </span>
