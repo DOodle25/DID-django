@@ -1,4 +1,4 @@
-## About the Project
+![image](https://github.com/user-attachments/assets/5511534b-eb32-4f94-92ad-a1640ad76992)## About the Project
 
 ### District Integration Dashboard
 
@@ -45,15 +45,18 @@ The **District Integration Dashboard** is a comprehensive web application that p
    - Each city is tracked for its number of public services, including schools, hospitals, railway stations, and more.
    - **RESTful APIs** allow for the addition, modification, and deletion of city-related data. The data is validated and stored securely in the **SQLite** database.
    
-   ![City Data Visualization](image_placeholder.png)
+   ![City Data Visualization](https://github.com/DOodle25/DID-django/blob/main/README-content/dashboard.png)
+   ![City Data Visualization2](https://github.com/DOodle25/DID-django/blob/main/README-content/population.png)
 
 #### 2. **Schemes and Programs**
    - The dashboard features a section for managing government schemes and programs across districts. Users can add new schemes, update existing ones, and delete those that are no longer active.
    - This section also allows filtering and searching schemes by city, date, or type.
    - The frontend employs **Context API** to manage global scheme state, making it easier to render data across multiple components without the need for redundant API calls.
 
-   ![Scheme Management](image_placeholder.png)
-
+   ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/new-scheme.png)
+   ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/population.png)
+    ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/scheme1.png)
+    ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/scheme2.png)
 #### 3. **Secure Authentication**
    - User login and registration are managed through the **JWT token** system, making the platform both secure and scalable.
    - Custom roles (e.g., admin, manager) control who can view and modify district and scheme data.
@@ -73,22 +76,23 @@ The **District Integration Dashboard** is a comprehensive web application that p
    - The entire dashboard is fully responsive, built with **Tailwind CSS** and **React** to ensure compatibility across all device types, including desktops, tablets, and smartphones.
    - Components like tables, graphs, and forms automatically adjust to different screen sizes, providing a seamless user experience.
 
-   ![Responsive Design](image_placeholder.png)
+   ![Responsive Design]!(https://github.com/DOodle25/DID-django/blob/main/README-content/RESPONSIVE.png)
 
 #### 6. **Data Security and Validation**
    - **Django** and **SQLite** ensure that all data transactions are secure and error-free. Extensive validation is done on both the backend and frontend before data is saved or updated, preventing unauthorized access or data corruption.
      
-  ![Responsive Design](image_placeholder.png)
+  ![Responsive Design](https://github.com/DOodle25/DID-django/blob/main/README-content/edit.png)
 #### 7. **Session-Based Token Management**
    - **JWT-based session handling** makes it easy for users to log in and remain authenticated as they navigate across different parts of the dashboard.
    - The token is stored securely in **local storage**, ensuring that user sessions remain active until they explicitly log out. This also helps protect sensitive information such as city statistics and government scheme data.
      
-  ![Responsive Design](image_placeholder.png)
+  ![[Responsive Design](https://github.com/DOodle25/DID-django/blob/main/README-content/ui1.png)
+  ![Scheme Management](https://github.com/DOodle25/DID-django/blob/main/README-content/ui2.png)
 #### 8. **Django Admin Panel**
    - A powerful **Django Admin Interface** is included, giving admin users the ability to directly manage all aspects of the application, including users, city data, and schemes.
    - This built-in admin dashboard allows for faster updates and administration without needing to access the database manually.
      
-  ![Responsive Design](image_placeholder.png)
+  ![Responsive Design](https://github.com/DOodle25/DID-django/blob/main/README-content/admin.png)
 ### Installation
 
 To get started with the **District Integration Dashboard**, follow these steps:
