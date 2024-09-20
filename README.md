@@ -67,7 +67,7 @@ The **District Integration Dashboard** is a comprehensive web application that p
    - The backend verifies the user's credentials using the **password hashing mechanism** in Django and updates the user's data accordingly. 
    - A session-based approach ensures that users' tokens are valid across multiple requests, with automatic token expiration for enhanced security.
 
-   ![Profile Management](image_placeholder.png)
+   ![Profile Management](https://github.com/DOodle25/DID-django/blob/main/README-content/manage.png)
 
 #### 5. **Responsive UI**
    - The entire dashboard is fully responsive, built with **Tailwind CSS** and **React** to ensure compatibility across all device types, including desktops, tablets, and smartphones.
