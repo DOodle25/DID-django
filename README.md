@@ -77,15 +77,18 @@ The **District Integration Dashboard** is a comprehensive web application that p
 
 #### 6. **Data Security and Validation**
    - **Django** and **SQLite** ensure that all data transactions are secure and error-free. Extensive validation is done on both the backend and frontend before data is saved or updated, preventing unauthorized access or data corruption.
-![Responsive Design](image_placeholder.png)
+     
+  ![Responsive Design](image_placeholder.png)
 #### 7. **Session-Based Token Management**
    - **JWT-based session handling** makes it easy for users to log in and remain authenticated as they navigate across different parts of the dashboard.
    - The token is stored securely in **local storage**, ensuring that user sessions remain active until they explicitly log out. This also helps protect sensitive information such as city statistics and government scheme data.
-![Responsive Design](image_placeholder.png)
+     
+  ![Responsive Design](image_placeholder.png)
 #### 8. **Django Admin Panel**
    - A powerful **Django Admin Interface** is included, giving admin users the ability to directly manage all aspects of the application, including users, city data, and schemes.
    - This built-in admin dashboard allows for faster updates and administration without needing to access the database manually.
-![Responsive Design](image_placeholder.png)
+     
+  ![Responsive Design](image_placeholder.png)
 ### Installation
 
 To get started with the **District Integration Dashboard**, follow these steps:
