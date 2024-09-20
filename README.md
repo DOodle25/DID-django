@@ -60,7 +60,7 @@ The **District Integration Dashboard** is a comprehensive web application that p
    - **Django** and **DRF** handle the backend authentication, ensuring token validity for each request.
    - Passwords are securely hashed and stored in the database, and users can change their credentials via the user profile settings.
 
-   [![User Authentication](https://github.com/DOodle25/DID-django/blob/main/README-content/login.png)]
+   ![User Authentication](https://github.com/DOodle25/DID-django/blob/main/README-content/login.png)
 
 #### 4. **User Management and Profile Updates**
    - Once logged in, users can access their profiles to update information such as name, email, and password.
