@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -81,7 +79,7 @@ export default function App() {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   const [visibleColumns, setVisibleColumns] = React.useState(
     INITIAL_VISIBLE_COLUMNS
-  ); // Change to array
+  );
   const [statusFilter, setStatusFilter] = React.useState("all");
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState({
@@ -90,7 +88,6 @@ export default function App() {
   });
   const [page, setPage] = React.useState(1);
 
-  // Ghar ke state
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [modalData, setModalData] = useState({
@@ -116,7 +113,6 @@ export default function App() {
       setSchemes(res.data.schemes);
       console.log("Schemes:", schemes);
     } catch (error) {
-      // navigate("/login")
       setError(error.message);
       console.error(error);
     }
@@ -628,7 +624,6 @@ const SchemeModal = ({
                 value={editedScheme.place}
                 onChange={(e) => onInputChange("place", e.target.value)}
               />
-              {/* Add other input fields for editing scheme details */}
             </>
           )}
         </ModalBody>

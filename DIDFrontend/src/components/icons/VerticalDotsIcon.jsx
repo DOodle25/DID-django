@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-const VerticalDotsIcon = ({size = 24, width, height, ...props}) => (
+const VerticalDotsIcon = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     fill="none"

@@ -11,22 +11,18 @@ const KadiMap = () => {
     const fetchPopsDataKadi = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "http://localhost:5000/agepops/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-            },
-            withCredentials: true,
-          }
-        );
-        
+        const response = await axios.get("http://localhost:5000/agepops/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
+
         if (response.data) {
-          // Assuming response.data is an array of objects
           const kadiData = response.data.find(
             (entry) => entry.taluka_name === "Kadi"
           );
-    
+
           if (kadiData) {
             const kadiTotal = kadiData.total_population;
             console.log("Total for Kadi:", kadiTotal);
@@ -47,20 +43,20 @@ const KadiMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/", { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/getcitiesdata/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
 
-        // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Kadi in the array
           const kadiData = response.data.data.find(
             (city) => city.taluka_name === "Kadi"
           );
 
-          // Check if Kadi data is found
           if (kadiData) {
             console.log("Kadi data:", kadiData);
             setKadiData(kadiData);
@@ -84,7 +80,7 @@ const KadiMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-          style={{ maxWidth:'400px'}}
+            style={{ maxWidth: "400px" }}
             width="400"
             height=""
             viewBox="0 0 326 358"
@@ -106,7 +102,11 @@ const KadiMap = () => {
         <CardBody>
           <p>{kadiTotal ? `Total population: ${kadiTotal}` : <Spinner />}</p>
           <p>
-            {kadiData ? ` No of Schools: ${kadiData.no_of_schools}` : <Spinner />}
+            {kadiData ? (
+              ` No of Schools: ${kadiData.no_of_schools}`
+            ) : (
+              <Spinner />
+            )}
           </p>
           <p>
             {kadiData ? (

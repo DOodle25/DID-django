@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 
-
 const BechrajiMap = () => {
   const [bechrajiTotal, setBechrajiTotal] = useState(null);
   const [bechrajiData, setBechrajiData] = useState(null);
@@ -15,16 +14,18 @@ const BechrajiMap = () => {
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
           "http://localhost:5000/agepops/",
-          { headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        });
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         console.log("okay");
         console.log(response.data);
         if (response.data) {
           const bechrajiData = response.data.find(
-            (entry) => entry.taluka_name  === "Bechraji" // Assuming this API still uses "Taluka"
+            (entry) => entry.taluka_name === "Bechraji"
           );
           if (bechrajiData) {
             const bechrajiTotal = bechrajiData.total_population;
@@ -47,20 +48,21 @@ const BechrajiMap = () => {
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
           "http://localhost:5000/getcitiesdata/",
-          { headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        });
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
 
         // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
           // Find the data for Bechraji in the array
           const bechrajiData = response.data.data.find(
-            (city) => city.taluka_name === "Becharaji" // Corrected the property name
+            (city) => city.taluka_name === "Becharaji"
           );
 
-          // Check if Bechraji data is found
           if (bechrajiData) {
             console.log("Bechraji data:", bechrajiData);
             setBechrajiData(bechrajiData);
@@ -84,7 +86,7 @@ const BechrajiMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-          style={{ maxWidth:'400px'}}
+            style={{ maxWidth: "400px" }}
             width=""
             height=""
             viewBox="0 0 304 194"
@@ -104,7 +106,9 @@ const BechrajiMap = () => {
       </Card>
       <Card className="flex justify-center max-w-md w-full">
         <CardBody>
-          <p>{bechrajiTotal ? `Total population: ${bechrajiTotal}` : <Spinner />}</p>
+          <p>
+            {bechrajiTotal ? `Total population: ${bechrajiTotal}` : <Spinner />}
+          </p>
           <p>
             {bechrajiData ? (
               ` No of Schools: ${bechrajiData.no_of_schools}`

@@ -13,15 +13,17 @@ const JotanaMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops/"
-          , { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/agepops/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         if (response.data) {
           const jotanaData = response.data.find(
-            (entry) => entry.taluka_name  === "Jotana"
+            (entry) => entry.taluka_name === "Jotana"
           );
           if (jotanaData) {
             const jotanaTotal = jotanaData.total_population;
@@ -43,20 +45,20 @@ const JotanaMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/", { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/getcitiesdata/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
 
-        // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Jotana in the array
           const jotanaData = response.data.data.find(
             (city) => city.taluka_name === "Jotana"
           );
 
-          // Check if Jotana data is found
           if (jotanaData) {
             console.log("Jotana data:", jotanaData);
             setJotanaData(jotanaData);
@@ -80,7 +82,7 @@ const JotanaMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-          style={{ maxWidth:"400px"}}
+            style={{ maxWidth: "400px" }}
             width=""
             height=""
             viewBox="0 0 200 178"
@@ -100,7 +102,9 @@ const JotanaMap = () => {
       </Card>
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
-          <p>{jotanaTotal ? `Total population: ${jotanaTotal}` : <Spinner />}</p>
+          <p>
+            {jotanaTotal ? `Total population: ${jotanaTotal}` : <Spinner />}
+          </p>
           <p>
             {jotanaData ? (
               ` No of Schools: ${jotanaData.no_of_schools}`

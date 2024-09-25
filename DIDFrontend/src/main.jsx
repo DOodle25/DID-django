@@ -13,7 +13,6 @@ import Home from "./components/Home/Home.jsx";
 import Population from "./components/Population/Population.jsx";
 import LoginPage from "./components/Auth/LoginPage.jsx";
 import RegisterPage from "./components/Auth/RegisterPage.jsx";
-import UploadCSV from "./components/Utils/UploadCSV.jsx";
 import UserProfile from "./components/Auth/UserProfile.jsx";
 import Demography from "./components/Demography/Demography.jsx";
 import AddSchemes from "./components/Schemes/AddSchemes.jsx";
@@ -52,7 +51,6 @@ const routes = createRoutesFromElements(
       <Route path="/population" element={<Population />} />
       <Route path="/demography" element={<Demography />} />
       <Route path="/addscheme" element={<AddSchemes />} />
-      <Route path="/upload" element={<UploadCSV />} />
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/visnagar" element={<VisnagarMap />} />
       <Route path="/kheralu" element={<KheraluMap />} />

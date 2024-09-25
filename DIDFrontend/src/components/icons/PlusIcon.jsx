@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const PlusIcon = ({size = 24, width, height, ...props}) => (
+const PlusIcon = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     fill="none"

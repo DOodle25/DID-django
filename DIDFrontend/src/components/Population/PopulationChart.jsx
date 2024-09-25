@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, CardBody } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material";
 
 const PopulationChart = () => {
   const [agePops, setAgePops] = useState([]);
@@ -18,15 +19,12 @@ const PopulationChart = () => {
           navigate("/login");
           return;
         }
-        const res = await axios.get(
-          "http://localhost:5000/agepops/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get("http://localhost:5000/agepops/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
         console.log("okay");
         console.log(res.data);
 
@@ -35,7 +33,9 @@ const PopulationChart = () => {
           const error = new Error(res.error);
           throw error;
         }
-        const sortedData = res.data.sort((a, b) => a.total_population - b.total_population);
+        const sortedData = res.data.sort(
+          (a, b) => a.total_population - b.total_population
+        );
         setAgePops(sortedData);
       } catch (err) {
         navigate("/login");
@@ -63,8 +63,8 @@ const PopulationChart = () => {
     datasets: [
       {
         label: "Population",
-        backgroundColor: "blue-900",
-        borderColor: "blue-900",
+        backgroundColor: "rgb(30,58,138)", // Color equivalent to blue-900
+        borderColor: "rgba(29, 78, 216, 1)", // Ensure the border matches the bar color
         data: data,
       },
     ],
@@ -73,7 +73,7 @@ const PopulationChart = () => {
   const options = {
     scales: {
       y: {
-        suggestedMax: 500000,
+        suggestedMax: Math.ceil(Math.max(...data) / 3), // Reduce max population by 1/3
         beginAtZero: true,
       },
     },
@@ -81,7 +81,7 @@ const PopulationChart = () => {
 
   return (
     <div>
-      <Card className="w-full">
+      <Card className="w-full mt-4">
         <CardBody>
           <Bar
             data={chartData}

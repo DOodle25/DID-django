@@ -16,7 +16,7 @@ const KheraluMap = () => {
           "http://localhost:5000/agepops/",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Ensure this is set correctly
+              Authorization: `Bearer ${token}`,
             },
             withCredentials: true,
           }
@@ -48,20 +48,17 @@ const KheraluMap = () => {
           "http://localhost:5000/getcitiesdata/",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Ensure this is set correctly
+              Authorization: `Bearer ${token}`,
             },
             withCredentials: true,
           }
         );
 
-        // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Visnagar in the array
           const kheraluData = response.data.data.find(
             (city) => city.taluka_name === "Kheralu"
           );
 
-          // Check if Visnagar data is found
           if (kheraluData) {
             console.log("Kheralu data:", kheraluData);
             setKheraluData(kheraluData);
@@ -85,7 +82,7 @@ const KheraluMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2k">
         <CardBody>
           <svg
-            style={{ maxWidth:'400px'}}
+            style={{ maxWidth: "400px" }}
             width="400"
             height=""
             viewBox="0 0 290 155"

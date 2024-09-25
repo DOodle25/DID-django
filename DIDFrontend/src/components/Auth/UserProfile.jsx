@@ -23,7 +23,6 @@ export default function UserProfile() {
     new_password: "",
     re_newpassword: "",
   });
-  
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -37,7 +36,7 @@ export default function UserProfile() {
 
         const res = await axios.get("http://localhost:5000/profile", {
           headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
+            Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
         });
@@ -49,7 +48,7 @@ export default function UserProfile() {
         }
 
         setData(res.data);
-        setData((prevData) => ({ ...prevData, password: "" })); // Clear password
+        setData((prevData) => ({ ...prevData, password: "" }));
       } catch (err) {
         console.error(err);
         navigate("/login");
@@ -67,16 +66,13 @@ export default function UserProfile() {
   const handleUpdate = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.patch(
-        "http://localhost:5000/profile/update", 
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            user: data,
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.patch("http://localhost:5000/profile/update", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          user: data,
+        },
+        withCredentials: true,
+      });
 
       if (res.status === 200) {
         alert("Profile updated successfully");
@@ -183,7 +179,6 @@ export default function UserProfile() {
                 onChange={handleChange}
                 className="mb-4"
               />
-
             </div>
           </div>
           <Spacer y={2} />

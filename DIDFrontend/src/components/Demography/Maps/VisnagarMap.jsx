@@ -13,12 +13,14 @@ const VisnagarMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops/"
-          , { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/agepops/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         if (response.data) {
           const visnagarData = response.data.find(
             (entry) => entry.taluka_name === "Visnagar"
@@ -43,19 +45,19 @@ const VisnagarMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/", { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
-        // Check if the response has data
+          "http://localhost:5000/getcitiesdata/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Visnagar in the array
           const visnagarData = response.data.data.find(
             (city) => city.taluka_name === "Visnagar"
           );
 
-          // Check if Visnagar data is found
           if (visnagarData) {
             console.log("Visnagar data:", visnagarData);
             setVisnagarData(visnagarData);
@@ -79,7 +81,7 @@ const VisnagarMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-            style={{ maxWidth:'340px'}}
+            style={{ maxWidth: "340px" }}
             width=""
             height=""
             viewBox="0 0 327 317"

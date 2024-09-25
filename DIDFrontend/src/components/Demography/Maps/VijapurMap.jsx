@@ -12,13 +12,15 @@ const VijapurMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          // "https://myapp.vercel.app/agepops", 
-          "http://localhost:5000/agepops/"
-          , { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          // "https://myapp.vercel.app/agepops",
+          "http://localhost:5000/agepops/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         if (response.data) {
           const vijapurData = response.data.find(
             (entry) => entry.taluka_name === "Vijapur"
@@ -43,20 +45,20 @@ const VijapurMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/", { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/getcitiesdata/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
 
-        // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Vijapur in the array
           const vijapurData = response.data.data.find(
             (city) => city.taluka_name === "Vijapur"
           );
 
-          // Check if Vijapur data is found
           if (vijapurData) {
             console.log("Vijapur data:", vijapurData);
             setVijapurData(vijapurData);
@@ -80,7 +82,7 @@ const VijapurMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-            style={{ maxWidth:'400px'}}
+            style={{ maxWidth: "400px" }}
             width=""
             height=""
             viewBox="0 0 286 280"

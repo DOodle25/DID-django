@@ -86,7 +86,6 @@ export default function App() {
   const [filterValue, setFilterValue] = React.useState("");
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   const [visibleColumns, setVisibleColumns] = React.useState(
-    // new Set(INITIAL_VISIBLE_COLUMNS) // Change to array
     INITIAL_VISIBLE_COLUMNS
   );
   const [statusFilter, setStatusFilter] = React.useState("all");
@@ -97,7 +96,6 @@ export default function App() {
   });
   const [page, setPage] = React.useState(1);
 
-  // Ghar ke state
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [modalData, setModalData] = useState({
@@ -127,7 +125,6 @@ export default function App() {
       setSchemes(res.data.schemes);
       console.log("Schemes:", schemes);
     } catch (error) {
-      // navigate("/login")
       setError(error.message);
       console.error(error);
     }
@@ -165,11 +162,13 @@ export default function App() {
         }
       );
 
-      console.log(res.data);
+      // console.log(res.data);
 
       if (res.status !== 200) {
         const error = new Error(res.error);
         throw error;
+      } else {
+        window.location.reload();
       }
 
       setSchemes((prevSchemes) =>
@@ -183,11 +182,8 @@ export default function App() {
         isOpen: false,
       });
 
-      // Use react-hot-toast's promise property to handle toast after it is dismissed
       const successToast = toast.success("Scheme edited successfully!");
       await successToast.promise;
-
-      // Now you can navigate after the toast is dismissed
     } catch (error) {
       toast.error("Error editing scheme!");
       navigate("/login");
@@ -331,8 +327,8 @@ export default function App() {
   const headerColumns = React.useMemo(() => {
     if (visibleColumns === "all") return columns;
 
-    return columns.filter(
-      (column) => Array.from(visibleColumns).includes(column.uid) // Change to array
+    return columns.filter((column) =>
+      Array.from(visibleColumns).includes(column.uid)
     );
   }, [visibleColumns]);
 
@@ -342,7 +338,6 @@ export default function App() {
     if (hasSearchFilter) {
       filteredSchemes = filteredSchemes.filter(
         (scheme) =>
-          // allow search by scheme name, ministry, place, status, progress
           scheme.schemename.toLowerCase().includes(filterValue.toLowerCase()) ||
           scheme.ministry.toLowerCase().includes(filterValue.toLowerCase()) ||
           scheme.place.toLowerCase().includes(filterValue.toLowerCase()) ||
@@ -411,7 +406,6 @@ export default function App() {
       case "progress":
         return (
           <Progress
-            // set showValueLabel to true if value is != NaN and != 0
             showValueLabel={scheme.progress !== 0 && !isNaN(scheme.progress)}
             color={statusColorMap[scheme.status]}
             value={scheme.progress}
@@ -642,8 +636,8 @@ export default function App() {
         classNames={{
           wrapper: "max-h-[382px]",
         }}
-        selectedKeys={selectedKeys}
-        selectionMode="multiple"
+        // selectedKeys={selectedKeys}
+        // selectionMode="multiple"
         sortDescriptor={sortDescriptor}
         topContent={topContent}
         topContentPlacement="outside"

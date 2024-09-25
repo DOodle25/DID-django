@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from "react";
-const ChevronDownIcon = ({strokeWidth = 1.5, ...otherProps}) => (
+const ChevronDownIcon = ({ strokeWidth = 1.5, ...otherProps }) => (
   <svg
     aria-hidden="true"
     fill="none"

@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "../../../src/index.css"; // You can create a separate CSS file for styles
+import "../../../src/index.css";
 
 const PathWithText = ({ pathId, fillColor, textContent, to }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +24,6 @@ const PathWithText = ({ pathId, fillColor, textContent, to }) => {
         <text
           x="200"
           y="100"
-          // fill={fillColor}
           fill="black"
           textAnchor="middle"
           visibility={isHovered ? "visible" : "hidden"}

@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardBody, Divider, Input, Select, SelectItem } from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Divider,
+  Input,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -19,13 +27,11 @@ const AddSchemes = () => {
     { name: "Ministry of Education", uid: "education" },
     { name: "Ministry of Health", uid: "health" },
     { name: "Ministry of Finance", uid: "finance" },
-    // Add more options as needed
   ];
 
   const placeOptions = [
     { name: "Urban", uid: "urban" },
     { name: "Rural", uid: "rural" },
-    // Add more options as needed
   ];
 
   const statusOptions = [

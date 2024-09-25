@@ -13,12 +13,14 @@ const VadnagarMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/agepops"
-          "http://localhost:5000/agepops/"
-          , { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/agepops/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
         if (response.data) {
           const vadnagarData = response.data.find(
             (entry) => entry.taluka_name === "Vadnagar"
@@ -43,20 +45,20 @@ const VadnagarMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://myapp.vercel.app/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/", { headers: {
-            Authorization: `Bearer ${token}`,  // Ensure this is set correctly
-          },
-          withCredentials: true,
-        });
+          "http://localhost:5000/getcitiesdata/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
 
-        // Check if the response has data
         if (response.data && Array.isArray(response.data.data)) {
-          // Find the data for Visnagar in the array
           const vadnagarData = response.data.data.find(
             (city) => city.taluka_name === "Vadnagar"
           );
 
-          // Check if Visnagar data is found
           if (vadnagarData) {
             console.log("Vadnagar data:", vadnagarData);
             setVadnagarData(vadnagarData);
@@ -80,7 +82,7 @@ const VadnagarMap = () => {
       <Card className="flex justify-center max-w-md w-full mb-2">
         <CardBody>
           <svg
-            style={{ maxWidth:'400px'}}
+            style={{ maxWidth: "400px" }}
             width=""
             height=""
             viewBox="0 0 262 185"
