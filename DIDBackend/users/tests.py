@@ -18,7 +18,7 @@ class UserTestsTests(APITestCase):
             "last_name": "User",
         }
         self.user = User.objects.create_user(**self.user_data)
-        self.token = AccessToken.for_user(self.user)  # Generate a token for the user
+        self.token = AccessToken.for_user(self.user)
         self.url_register = reverse('register')
         self.url_login = reverse('login')
         self.url_verify_otp = reverse('verify_otp')
@@ -27,34 +27,27 @@ class UserTestsTests(APITestCase):
         self.url_send_otp = reverse('send-otp')
 
     def test_user_registration_with_otp(self):
-        # Make a POST request to register the user
         response = self.client.post(self.url_register, self.user_data, format='json')
         
-        # Check that the response status is 201 Created
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        # Check that an email was sent
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Your OTP Code')
 
-        # Check that the OTP was created in the database
         otp_verification = OtpVerification.objects.filter(user__email=self.user_data['email']).first()
         self.assertIsNotNone(otp_verification)
         self.assertFalse(otp_verification.verified)
 
-        # Check the OTP length
         self.assertEqual(len(otp_verification.otp), 6)
 
     def test_invalid_registration(self):
-        # Make a POST request with missing fields
         invalid_data = {
             'email': 'invaliduser@example.com'
         }
         response = self.client.post(self.url_register, invalid_data, format='json')
 
-        # Check that the response status is 400 Bad Request
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('username', response.data)  # Check for specific error messages as needed
+        self.assertIn('username', response.data)
 
     def test_user_login(self):
         response = self.client.post(self.url_login, {
@@ -89,7 +82,6 @@ class UserTestsTests(APITestCase):
 
 
     def test_update_user_profile(self):
-        # Prepare new user data
         new_data = {
             'headers': {
                 'Authorization': f'Bearer {self.token}',
@@ -105,20 +97,15 @@ class UserTestsTests(APITestCase):
             }
         }
 
-        # Make a PATCH request to update the user profile
         response = self.client.patch(self.url_profile_update, new_data, format='json')
 
-        # Check that the response status is 200 OK
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        # Refresh the user from the database
         self.user.refresh_from_db()
 
-        # Check that the user's first name and last name were updated
         self.assertEqual(self.user.first_name, 'UpdatedFirst')
         self.assertEqual(self.user.last_name, 'UpdatedLast')
 
-        # Check that the user's password was updated
         self.assertTrue(self.user.check_password('newpassword123'))
     def test_logout_user(self):
         response = self.client.post(self.url_login, {

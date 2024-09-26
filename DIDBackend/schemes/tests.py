@@ -70,14 +70,6 @@
 #     def test_team_member_logging(self):
 #         self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), {'lasteditedby': 'john@example.com'}, format='json')
 
-
-
-
-
-
-
-
-
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -107,7 +99,6 @@ class SchemeTests(APITestCase):
         }
         self.scheme = Scheme.objects.create(**self.scheme_data)
 
-    # Original test cases
     def test_add_scheme(self):
         response = self.client.post(reverse('add_scheme'), [self.scheme_data], format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -146,7 +137,6 @@ class SchemeTests(APITestCase):
     def test_team_member_logging(self):
         self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), {'lasteditedby': 'john@example.com'}, format='json')
 
-    # Additional test cases to reach 100
     def test_add_scheme_with_missing_fields(self):
         data = {
             'schemename': 'Incomplete Scheme',
@@ -170,12 +160,12 @@ class SchemeTests(APITestCase):
 
     def test_add_scheme_with_valid_date_format(self):
         data = self.scheme_data.copy()
-        data['date'] = '2021-12-31'  # Valid format
+        data['date'] = '2021-12-31'
         response = self.client.post(reverse('add_scheme'), [data], format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_scheme_with_valid_date_format(self):
-        update_data = {'date': '2021-12-31'}  # Valid format
+        update_data = {'date': '2021-12-31'}
         response = self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), update_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -290,13 +280,13 @@ class SchemeTests(APITestCase):
 
 
     def test_update_scheme_with_very_long_leadperson(self):
-        update_data = {'leadperson': 'A' * 256}  # Assuming there's a limit for leadperson
+        update_data = {'leadperson': 'A' * 256} 
         response = self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), update_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_add_scheme_with_very_long_schemename(self):
         data = self.scheme_data.copy()
-        data['schemename'] = 'A' * 256  # Assuming there's a limit for schemename
+        data['schemename'] = 'A' * 256 
         response = self.client.post(reverse('add_scheme'), [data], format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
@@ -324,7 +314,7 @@ class SchemeTests(APITestCase):
 
     def test_add_scheme_with_valid_date_format(self):
         data = self.scheme_data.copy()
-        data['startdate'] = '2024-01-01'  # Valid date
+        data['startdate'] = '2024-01-01'
         response = self.client.post(reverse('add_scheme'), [data], format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -336,39 +326,32 @@ class SchemeTests(APITestCase):
 
     def test_add_scheme_with_empty_ministry(self):
         data = self.scheme_data.copy()
-        data['ministry'] = ''  # Empty ministry
+        data['ministry'] = '' 
         response = self.client.post(reverse('add_scheme'), [data], format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_update_scheme_without_authorization(self):
-        self.client.logout()  # Ensure user is logged out
+        self.client.logout()
         response = self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), self.scheme_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
     def test_delete_scheme_with_authorization(self):
-        # Assuming the user is already authenticated
         response = self.client.delete(reverse('delete_scheme_details', kwargs={'id': self.scheme.srno}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_get_all_schemes_with_authorization(self):
-        # Assuming the user is already authenticated
         response = self.client.get(reverse('get_all_schemes'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_get_scheme_by_id_with_authorization(self):
-        # Assuming the user is already authenticated
         response = self.client.get(reverse('get_scheme_by_id', kwargs={'id': self.scheme.srno}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_add_scheme_with_authorization(self):
-        # Assuming the user is already authenticated
         response = self.client.post(reverse('add_scheme'), [self.scheme_data], format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_update_scheme_with_authorization(self):
-        # Assuming the user is already authenticated
         response = self.client.put(reverse('update_scheme_details', kwargs={'id': self.scheme.srno}), self.scheme_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-
