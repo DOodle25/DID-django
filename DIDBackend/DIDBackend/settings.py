@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     # middleware to validate JWT tokens for protected routes
-    'authentication.middleware.JWTAuthenticationMiddleware',
+    # 'authentication.middleware.JWTAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'DIDBackend.urls'

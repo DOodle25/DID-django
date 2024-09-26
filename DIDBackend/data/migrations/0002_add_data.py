@@ -16,7 +16,6 @@ def populate_taluka_population(apps, schema_editor):
         TalukaPopulation(taluka_name='Visnagar', total_population=24000),
         TalukaPopulation(taluka_name='Total', total_population=786384),
     ])
-
 # Function to populate cities data
 def add_cities_data(apps, schema_editor):
     CitiesData = apps.get_model('data', 'CitiesData')
