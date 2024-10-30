@@ -31,7 +31,10 @@ ALLOWED_HOSTS = [
     '127.0.0.1',                # Optionally, include 127.0.0.1
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://district-integrated-dashboard-backend-cudqcnbehzgye3c9.centralindia-01.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = [
+    'https://district-integrated-dashboard-backend-cudqcnbehzgye3c9.centralindia-01.azurewebsites.net',
+    'https://didbackend.onrender.com'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
