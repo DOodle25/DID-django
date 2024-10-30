@@ -3,6 +3,14 @@
 ### District Integration Dashboard
 Live - https://didfrontend.onrender.com/
 <br/>
+<br/>
+## Related Repo:
+frontend - https://github.com/DOodle25/DID-Frontend
+<br/>
+backend - https://github.com/DOodle25/DID-Backend
+<br/>
+used for temporory hosting frontend and backend before full release for testing
+<br/>
 The **District Integration Dashboard** is a comprehensive web application that provides an all-in-one platform for managing and visualizing district-level data in a seamless and intuitive interface. Built using the **React** and powered by Python on the backend with **Django**, the dashboard is designed to serve administrative and government needs, offering a range of functionalities such as population management, scheme tracking, and city data aggregation. The integration of both **frontend and backend technologies** ensures a smooth, secure, and responsive user experience.
 
 ### Key Features
