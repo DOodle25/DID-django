@@ -33,7 +33,8 @@ import { useNavigate } from "react-router-dom";
 export default function App() {
   const API_BASE_URL =
     // "https://didbackend.onrender.com";
-    "http://localhost:5000";
+    // "http://localhost:5000";
+    import.meta.env.VITE_BACKEND_URL;
   const columns = [
     { name: "SR.NO", uid: "srno", sortable: true },
     { name: "SCHEME NAME", uid: "schemename", sortable: true },

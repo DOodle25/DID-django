@@ -20,7 +20,8 @@ const DetailsBar = () => {
       try {
         const res = await axios.get(
           // "https://didbackend.onrender.com/agepops",
-          "http://localhost:5000/agepops/",
+          // "http://localhost:5000/agepops/",
+          `${import.meta.env.VITE_BACKEND_URL}/agepops`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

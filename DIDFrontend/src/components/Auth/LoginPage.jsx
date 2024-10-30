@@ -17,7 +17,8 @@ import Cookies from "js-cookie";
 import { useAuth } from "../../auth-context/auth-context";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: import.meta.env.VITE_BACKEND_URL,
+  // baseURL: "http://localhost:5000/",
   // baseURL: "https://didbackend.onrender.com/",
 });
 

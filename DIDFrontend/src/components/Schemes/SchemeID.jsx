@@ -1435,8 +1435,9 @@ const SchemeDetails = () => {
     const fetchScheme = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/getschemesbyid/${id}/`,
+          // `http://localhost:5000/getschemesbyid/${id}/`,
           // `https://didbackend.onrender.com/getschemesbyid/${id}/`,
+          `${import.meta.env.VITE_BACKEND_URL}/getschemesbyid/${id}/`,
           {
             headers: { Authorization: `Bearer ${token}` },
             withCredentials: true,

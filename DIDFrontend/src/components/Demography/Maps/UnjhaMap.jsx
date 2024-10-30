@@ -13,7 +13,8 @@ const UnjhaMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://didbackend.onrender.com/agepops",
-          "http://localhost:5000/agepops/",
+          // "http://localhost:5000/agepops/",
+          `${import.meta.env.VITE_BACKEND_URL}/agepops`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -45,7 +46,8 @@ const UnjhaMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://didbackend.onrender.com/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/",
+          // "http://localhost:5000/getcitiesdata/",
+          `${import.meta.env.VITE_BACKEND_URL}/getcitiesdata`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

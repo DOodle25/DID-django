@@ -47,8 +47,9 @@ const AddSchemes = () => {
       const lasteditedby = JSON.parse(localStorage.getItem("user")).email;
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:5000/addScheme/",
+        // "http://localhost:5000/addScheme/",
         // "https://didbackend.onrender.com/addScheme/",
+        `${import.meta.env.VITE_BACKEND_URL}/addScheme`,
         {
           schemename,
           ministry,

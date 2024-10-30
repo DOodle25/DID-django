@@ -12,8 +12,9 @@ const KadiMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:5000/agepops/"
+          // "http://localhost:5000/agepops/"
           // "https://didbackend.onrender.com/agepops/"
+          `${import.meta.env.VITE_BACKEND_URL}/agepops/`
           , {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,7 +47,8 @@ const KadiMap = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           // "https://didbackend.onrender.com/getcitiesdata",
-          "http://localhost:5000/getcitiesdata/",
+          // "http://localhost:5000/getcitiesdata/",
+          `${import.meta.env.VITE_BACKEND_URL}/getcitiesdata/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

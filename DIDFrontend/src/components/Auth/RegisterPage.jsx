@@ -48,7 +48,8 @@ const RegisterPage = () => {
     const csrfToken = Cookies.get("csrftoken");
     try {
       const response = await axios.post(
-        "http://localhost:5000/register",
+        `${import.meta.env.VITE_BACKEND_URL}/register`,
+        // "http://localhost:5000/register",
         // "https://didbackend.onrender.com/register",
         formData,
         {
@@ -76,7 +77,8 @@ const RegisterPage = () => {
     const csrfToken = Cookies.get("csrftoken");
     try {
       const response = await axios.post(
-        "http://localhost:5000/verify-otp",
+        `${import.meta.env.VITE_BACKEND_URL}/verify-otp`,
+        // "http://localhost:5000/verify-otp",
         // "https://didbackend.onrender.com/verify-otp",
         { email: formData.email, otp },
         {

@@ -35,7 +35,8 @@ export default function UserProfile() {
         }
 
         const res = await axios.get(
-          "http://localhost:5000/profile"
+          `${import.meta.env.VITE_BACKEND_URL}/profile`
+          // "http://localhost:5000/profile"
           // "https://didbackend.onrender.com/profile"
           , {
           headers: {
@@ -70,7 +71,8 @@ export default function UserProfile() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.patch(
-        "http://localhost:5000/profile/update"
+        `${import.meta.env.VITE_BACKEND_URL}/profile/update`
+        // "http://localhost:5000/profile/update"
         // "https://didbackend.onrender.com/profile/update"
         , {
         headers: {
@@ -93,8 +95,9 @@ export default function UserProfile() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/logout`,
         // "http://localhost:5000/logout",
-        "https://didbackend.onrender.com/logout",
+        // "https://didbackend.onrender.com/logout",
         {},
         {
           headers: {
