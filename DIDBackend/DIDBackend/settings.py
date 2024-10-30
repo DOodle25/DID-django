@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',                # Optionally, include 127.0.0.1
 ]
 
-# Application definition
+CSRF_TRUSTED_ORIGINS = ['https://district-integrated-dashboard-backend-cudqcnbehzgye3c9.centralindia-01.azurewebsites.net']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
