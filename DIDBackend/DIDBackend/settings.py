@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-7%2l!3bg17fe3&l+$((7lm^_l1jp-vn=h(g@h6vf4$h3_)f9+=
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '*',
     'didbackend.onrender.com',  # Add your Render domain
     'localhost',                # Optionally, you can include localhost
     '127.0.0.1',                # Optionally, include 127.0.0.1
