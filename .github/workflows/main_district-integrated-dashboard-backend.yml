@@ -32,7 +32,10 @@ jobs:
         run: |
           cd DIDBackend
           pip install -r requirements.txt
-        
+      - name: Collect Static Files
+        run: |
+          cd DIDBackend
+          python manage.py collectstatic --noinput
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
