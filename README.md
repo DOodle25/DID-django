@@ -1,11 +1,11 @@
 ## About the Project
 
 ### District Integration Dashboard
-
+Live - https://didfrontend.onrender.com/
+<br/>
 The **District Integration Dashboard** is a comprehensive web application that provides an all-in-one platform for managing and visualizing district-level data in a seamless and intuitive interface. Built using the **React** and powered by Python on the backend with **Django**, the dashboard is designed to serve administrative and government needs, offering a range of functionalities such as population management, scheme tracking, and city data aggregation. The integration of both **frontend and backend technologies** ensures a smooth, secure, and responsive user experience.
 
 ### Key Features
-
 - **District Data Visualization**: Visualize various district-level data like population demographics, public services (schools, hospitals, bus stations, etc.), and schemes. The dashboard uses **React** for a highly interactive user interface.
   
 - **Data Management & Analytics**: Manage critical data points for different cities and talukas within the district, including the number of schools, hospitals, police stations, etc. This data can be visualized through charts and tables for easier decision-making.
