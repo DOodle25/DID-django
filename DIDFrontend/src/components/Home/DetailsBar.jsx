@@ -19,7 +19,7 @@ const DetailsBar = () => {
     const getAgePops = async () => {
       try {
         const res = await axios.get(
-          // "https://myapp.vercel.app/agepops"
+          // "https://didbackend.onrender.com/agepops",
           "http://localhost:5000/agepops/",
           {
             headers: {

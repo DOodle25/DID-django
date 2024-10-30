@@ -19,7 +19,10 @@ const PopulationChart = () => {
           navigate("/login");
           return;
         }
-        const res = await axios.get("http://localhost:5000/agepops/", {
+        const res = await axios.get(
+          // "https://didbackend.onrender.com/agepops/"
+          "http://localhost:5000/agepops/"
+          , {
           headers: {
             Authorization: `Bearer ${token}`,
           },

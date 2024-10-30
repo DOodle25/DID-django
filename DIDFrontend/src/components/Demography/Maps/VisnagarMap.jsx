@@ -12,7 +12,7 @@ const VisnagarMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          // "https://myapp.vercel.app/agepops"
+          // "https://didbackend.onrender.com/agepops",
           "http://localhost:5000/agepops/",
           {
             headers: {
@@ -44,7 +44,7 @@ const VisnagarMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          // "https://myapp.vercel.app/getcitiesdata",
+          // "https://didbackend.onrender.com/getcitiesdata",
           "http://localhost:5000/getcitiesdata/",
           {
             headers: {

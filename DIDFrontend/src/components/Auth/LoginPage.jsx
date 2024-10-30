@@ -18,13 +18,14 @@ import { useAuth } from "../../auth-context/auth-context";
 
 const api = axios.create({
   baseURL: "http://localhost:5000/",
+  // baseURL: "https://didbackend.onrender.com/",
 });
 
 const LoginPage = () => {
   const { setToken, setUser } = useAuth();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("210305105302@paruluniversity.ac.in");
+  const [password, setPassword] = useState("Pd@1");
   const [isForgotPassword, setForgotPassword] = useState(false);
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");

@@ -49,6 +49,7 @@ const RegisterPage = () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/register",
+        // "https://didbackend.onrender.com/register",
         formData,
         {
           withCredentials: true,
@@ -76,6 +77,7 @@ const RegisterPage = () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/verify-otp",
+        // "https://didbackend.onrender.com/verify-otp",
         { email: formData.email, otp },
         {
           withCredentials: true,

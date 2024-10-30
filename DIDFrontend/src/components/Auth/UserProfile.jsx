@@ -34,7 +34,10 @@ export default function UserProfile() {
           return;
         }
 
-        const res = await axios.get("http://localhost:5000/profile", {
+        const res = await axios.get(
+          "http://localhost:5000/profile"
+          // "https://didbackend.onrender.com/profile"
+          , {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -66,7 +69,10 @@ export default function UserProfile() {
   const handleUpdate = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.patch("http://localhost:5000/profile/update", {
+      const res = await axios.patch(
+        "http://localhost:5000/profile/update"
+        // "https://didbackend.onrender.com/profile/update"
+        , {
         headers: {
           Authorization: `Bearer ${token}`,
           user: data,
@@ -87,7 +93,8 @@ export default function UserProfile() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/logout",
+        // "http://localhost:5000/logout",
+        "https://didbackend.onrender.com/logout",
         {},
         {
           headers: {

@@ -11,7 +11,10 @@ const KadiMap = () => {
     const fetchPopsDataKadi = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/agepops/", {
+        const response = await axios.get(
+          "http://localhost:5000/agepops/"
+          // "https://didbackend.onrender.com/agepops/"
+          , {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +45,7 @@ const KadiMap = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          // "https://myapp.vercel.app/getcitiesdata",
+          // "https://didbackend.onrender.com/getcitiesdata",
           "http://localhost:5000/getcitiesdata/",
           {
             headers: {

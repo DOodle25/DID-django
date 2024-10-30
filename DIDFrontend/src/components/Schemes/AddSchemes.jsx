@@ -48,6 +48,7 @@ const AddSchemes = () => {
       const token = localStorage.getItem("token");
       const response = await axios.post(
         "http://localhost:5000/addScheme/",
+        // "https://didbackend.onrender.com/addScheme/",
         {
           schemename,
           ministry,
