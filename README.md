@@ -5,7 +5,10 @@
 
 https://github.com/user-attachments/assets/1bbb40b6-7c62-4acf-8dcc-1f6a8de0b4d1
 
-
+### **Azure Hosted**
+- **Backend**: [Admin Login](https://district-integrated-dashboard-backend-cudqcnbehzgye3c9.centralindia-01.azurewebsites.net/admin/login/?next=/admin/)
+- **Frontend**: [Dashboard Frontend](https://ambitious-bush-0645df200.5.azurestaticapps.net/)
+<br/>
 Live - https://didfrontend.onrender.com/
 <br/>
 <br/>
