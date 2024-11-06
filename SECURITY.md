@@ -7,7 +7,7 @@ The following table shows the versions of the District Integrated Dashboard curr
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.0.0   | :white_check_mark: |
-
+| 2.0.0   | :white_check_mark: |
 ## Reporting a Vulnerability
 
 If you discover a vulnerability in the District Integrated Dashboard, please follow these steps to report it:
