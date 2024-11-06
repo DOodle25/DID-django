@@ -19,7 +19,3 @@ If you discover a vulnerability in the District Integrated Dashboard, please fol
    - **Declined Reports**: You will receive an explanation and guidance on next steps if applicable.
 
 We encourage responsible disclosure, and we’ll work with you to make sure any valid vulnerabilities are resolved promptly. Thank you for helping to keep the District Integrated Dashboard secure.
-
---- 
-
-Feel free to adjust the email or update frequency to match your preferences.
