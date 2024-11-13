@@ -1,20 +1,20 @@
 ## About the Project
 
 ### District Integration Dashboard
-![GitHub](https://img.shields.io/github/repo-size/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/languages/code-size/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/license/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/last-commit/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/stars/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/forks/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/issues/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/issues-pr/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/commit-activity/m/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/commit-activity/y/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/contributors/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/downloads/DOodle25/Portfolio/total?style=plastic) 
-![GitHub](https://img.shields.io/github/release/DOodle25/Portfolio?style=plastic) 
-![GitHub](https://img.shields.io/github/issues-closed/DOodle25/Portfolio?style=plastic) 
+![GitHub](https://img.shields.io/github/repo-size/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/languages/code-size/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/license/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/last-commit/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/stars/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/forks/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/issues/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/issues-pr/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/commit-activity/m/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/commit-activity/y/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/contributors/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/downloads/DOodle25/DID-django/total?style=plastic) 
+![GitHub](https://img.shields.io/github/release/DOodle25/DID-django?style=plastic) 
+![GitHub](https://img.shields.io/github/issues-closed/DOodle25/DID-django?style=plastic)
 
 https://github.com/user-attachments/assets/1bbb40b6-7c62-4acf-8dcc-1f6a8de0b4d1
 
