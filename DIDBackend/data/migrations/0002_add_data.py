@@ -1,4 +1,6 @@
 from django.db import migrations
+#! TODO: it should first fetch data from government site then showcase it
+
 
 # Function to populate taluka population data
 def populate_taluka_population(apps, schema_editor):
