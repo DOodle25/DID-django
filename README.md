@@ -16,6 +16,7 @@
 ![GitHub](https://img.shields.io/github/release/DOodle25/DID-django?style=plastic) 
 ![GitHub](https://img.shields.io/github/issues-closed/DOodle25/DID-django?style=plastic)
 
+
 https://github.com/user-attachments/assets/1bbb40b6-7c62-4acf-8dcc-1f6a8de0b4d1
 
 ### **Azure Hosted**
